@@ -1,0 +1,13 @@
+type: object
+properties:
+  channelName:
+    type: string
+    example: channel 1
+  description:
+    type: string
+    example: channel 1
+  members:
+    type: array
+    items:
+      type: string
+      example: 5e9d5b2b4f9f9b0017b5e7a0

@@ -1,0 +1,32 @@
+post:
+  description: calculate year end depreciation
+  operationId: calculateDepreciation
+  summary: calculate depreciation
+  tags:
+    - Assets
+  security:
+    - bearerAuth: []
+  responses:
+    "200":
+      description: depreciation calculated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: depreciation calculated successfully
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

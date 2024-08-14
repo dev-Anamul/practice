@@ -1,0 +1,104 @@
+post:
+  description: add notification channel
+  summary: add notification channel
+  operationId: addNotificationChannel
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/NotificationChannelDto.yaml
+            - type: object
+              properties:
+                logo:
+                  type: string
+                  format: binary
+  responses:
+    "201":
+      description: notification channel created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel created successfully
+              data:
+                $ref: ../../components/schemas/NotificationChannel.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/notification-channels
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: get all notification channels
+  summary: get all notification channels
+  operationId: getAllNotificationChannels
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+  responses:
+    "200":
+      description: notification channels fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channels fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/NotificationChannel.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/notification-channels
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

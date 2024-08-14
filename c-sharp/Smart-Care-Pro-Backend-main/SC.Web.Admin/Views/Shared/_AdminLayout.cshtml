@@ -1,0 +1,1323 @@
+﻿@using Microsoft.AspNetCore.Http
+@using SC.Web.Admin.SessionManager
+@inject IHttpContextAccessor httpContextAccessor
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
+    var specialTag = @Configuration.GetSection("ProjectSetup").GetSection("SpecialTag").Value;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>@ViewData["Title"]CarePro</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/Logo.ico" rel="icon">
+    <link href="~/assets/img/Logo.ico" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="~/css/cdns/googleapis.css" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/cdns/select2.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/cdns/jquery-ui.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+    <!--Essential JS cdn-Client side Validation-->
+    <script src="~/js/cdns/jquery.min.js"></script>
+    <script src="~/js/cdns/jquery.validate.min.js"></script>
+    <script src="~/js/cdns/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/cdns/jquery.unobtrusive-ajax.js"></script>
+</head>
+
+<body>
+    @{
+        var user = httpContextAccessor.HttpContext?.Session.GetCurrentAdmin();
+    }
+
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <i class="bi bi-list   mt-0 pt-0 toggle-sidebar-btn"></i>
+        </div>
+        <div class="pagetitle ps-2">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <h1 class="card-title fs-3 mb-0 ps-2 mt-1 pt-3 mb-0 fw-bolder">
+                    CarePro
+                </h1>
+            </form>
+        </div>
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                        @if (user != null)
+                        {
+                            <span class="d-none d-md-block dropdown-toggle ps-2">@user.FirstName @user.Surname</span>
+                        }
+                        else
+                        {
+                            <script type="text/javascript">
+                                window.location.href = "http://localhost:5051/";
+                            </script>
+                        }
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            @if (user != null)
+                            {
+                                <h6>@user.FirstName @user.Surname</h6>
+                                <span>@user.Designation</span>
+                            }
+
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/Home/Logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <!--USER ACCESS-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#UserTables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="UserTables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/UserAccesses/Index?module=User Management">
+                            <i class="bi bi-circle"></i><span>Users</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--CLIENTS-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#ClientsTables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="ClientsTables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Countries/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>Country</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Provinces/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>Province & District & Facility</span>
+                        </a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/HomeLanguages/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>Home Language</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Occupations/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>Occupations</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/EducationLevels/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>Education Levels</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ArmedForceServices/Index?module=Clients">
+                            <i class="bi bi-circle"></i><span>DFZ (Armed Force Service)</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--HTS-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#HTStables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>HTS</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="HTStables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ClientTypes/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>Client Type</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/VisitTypes/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>Visit Type</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ServicePoints/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>Service Point</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/HIVTestingReasons/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>HIV Testing Reasons</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/HIVNotTestingReasons/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>HIV Not Testing Reasons</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/HIVRiskFactors/Index?module=HTS">
+                            <i class="bi bi-circle"></i><span>HIV Risk Factors</span>
+                        </a>
+                    </li>
+                 
+             
+                </ul>
+            </li>
+
+            <!--PHARMACY-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#pharmacy-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Pharmacy</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="pharmacy-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugRoutes/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Route</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugClasses/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Class</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugUtilities/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Utility</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugDosageUnits/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Dosage Unit</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugFormulations/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Formulation</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugRegimens/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Drug Regimen</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/SpecialDrugs/Index?module=Pharmacy&&parent=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Special Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/GenericDrugs/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Generic Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DrugDefinitions/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>General Drug Definition</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="~/SystemsRelevances/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Systems Relevance</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/FrequencyIntervals/Index?module=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Frequency Interval</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PhysicalSystems/Index?module=Pharmacy&&parent=Pharmacy">
+                            <i class="bi bi-circle"></i><span>Physical System</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--INVESTIGATION-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#investigation-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Investigation</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="investigation-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TestTypes/Index?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Test Type</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Tests/IndexTest?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Single Test</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/CompositeTests/Index?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Composite Test</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TestItems/Index?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Composite Test Item</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/MeasuringUnits/Index?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Measuring Unit</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ResultOptions/Index?module=Investigation">
+                            <i class="bi bi-circle"></i><span>Result Option</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--DIAGNOSIS-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#diagnosis-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Diagnosis</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="diagnosis-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ICDDiagnosis/Index?module=Diagnosis&&parent=Diagnosis">
+                            <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/NTGLevelOneDiagnosis/Index?module=Diagnosis&&parent=Diagnosis">
+                            <i class="bi bi-circle"></i><span>NTG</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--MEDICAL ENCOUNTER-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#medicalEncounter-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Medical Encounter</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="medicalEncounter-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+                    <!--TB CONSTITUTIONAL-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#TB-menu">
+                            <i class="bi bi-circle"></i><span>TB Constitutional Symptom</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="TB-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="ms-2 nav-item">
+                                <a class="nav-link" href="~/TBSymptoms/Index?module=TB Constitutional Symptom&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>TB Symptom</span>
+                                </a>
+                            </li>
+
+                            <li class="ms-2 nav-item">
+                                <a class="nav-link" href="~/ConstitutionalSymptoms/Index?module=TB Constitutional Symptom&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Constitutional Symptom</span>
+                                </a>
+                            </li>
+
+                            <li class="ms-2 nav-item">
+                                <a class="nav-link" href="~/ConstitutionalSymptomTypes/Index?module=TB Constitutional Symptom&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Constitutional Symptom Type</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--REVIEW OF SYSTEM-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#reviewOfSystem-menu">
+                            <i class="bi bi-circle"></i><span>Review of System</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="reviewOfSystem-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=Review of System&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--CHRONIC NON-CHRONIC CONDITION-->
+                    <li>
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#condition-menu">
+                            <i class="bi bi-circle"></i><span>Chronic Non-chronic Condition</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="condition-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/ICDDiagnosis/Index?module=Chronic Non-chronic Condition&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                                </a>
+                            </li>
+
+                           <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/NTGLevelOneDiagnosis/Index?module=Chronic Non-chronic Condition&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>NTG</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--ALLERGIES-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#allergies-menu">
+                            <i class="bi bi-circle"></i><span>Allergies</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="allergies-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Allergies/Index?module=Allergies&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Allergies</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/AllergicDrugs/Index?module=Allergies&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Allergic Drug</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--GYNOBS-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#GynObs-menu">
+                            <i class="bi bi-circle"></i><span>Gyn & Obs History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="GynObs-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Contraceptives/Index?module=Gyn & Obs History&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Contraceptive</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/CaCxScreeningMethods/Index?module=Gyn & Obs History&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>CaCx Screening Method</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--IMMUNIZATION HISTORY-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#immunization-menu">
+                            <i class="bi bi-circle"></i><span>Immunization History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="immunization-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineTypes/Index?module=Immunization History&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Vaccine Type</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Vaccines/Index?module=Immunization History&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Vaccines</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineDoses/Index?module=Immunization History&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Vaccine Dose</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--SYSTEM EXAMINATION-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#systemExamination-menu">
+                            <i class="bi bi-circle"></i><span>System Examination</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="systemExamination-menu" class="nav-content collapse" data-bs-parent="#medicalEncounter-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=System Examination&&parent=Medical Encounter">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--PEP-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#PEP-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>PEP</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="PEP-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+                    <!--PEP CHIEF COMPLAINT-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#chiefComplaint-menu">
+                            <i class="bi bi-circle"></i><span>Chief Complaint</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="chiefComplaint-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/ExposureTypes/Index?module=Chief Complaint&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Exposure Type</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--REVIEW OF SYSTEM-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#reviewOfSystem-menu">
+                            <i class="bi bi-circle"></i><span>Review of System</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="reviewOfSystem-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=Review of System&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--MEDICAL HISTORIES-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#histories-menu">
+                            <i class="bi bi-circle"></i><span>Medical History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="histories-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Risks/Index?module=?module=Review of System&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>PEP Risk</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--CHRONIC NON-CHRONIC CONDITION-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#condition-menu">
+                            <i class="bi bi-circle"></i><span>Chronic Non-chronic Condition</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="condition-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/ICDDiagnosis/Index?module=?module=Chronic Non-chronic Condition&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/NTGLevelOneDiagnosis/Index?module=?module=Chronic Non-chronic Condition&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>NTG</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--GYNOBS-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#GynObs-menu">
+                            <i class="bi bi-circle"></i><span>Gyn & Obs History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="GynObs-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Contraceptives/Index?module=Gyn & Obs History&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Contraceptive</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/CaCxScreeningMethods/Index?module=Gyn & Obs History&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>CaCx Screening Method</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--IMMUNIZATION HISTORY-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#immunization-menu">
+                            <i class="bi bi-circle"></i><span>Immunization History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="immunization-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineTypes/Index?module=Immunization History&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Vaccine Type</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Vaccines/Index?module=Immunization History&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Vaccines</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineDoses/Index?module=Immunization History&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Vaccine Dose</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--SYSTEM EXAMINATION-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#systemExamination-menu">
+                            <i class="bi bi-circle"></i><span>System Examination</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="systemExamination-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=Physical System&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--PEP PLAN-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#PEPplan-menu">
+                            <i class="bi bi-circle"></i><span>PEP Plan</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="PEPplan-menu" class="nav-content collapse" data-bs-parent="#PEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/StoppingReasons/Index?module=PEP Plan&&parent=PEP">
+                                    <i class="bi bi-circle"></i><span>PEP Stopping Reason</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--PrEP-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#PrEP-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>PrEP</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="PrEP-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+                    <!--PrEP CHIEF COMPLAINT-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#chiefComplaint-menu">
+                            <i class="bi bi-circle"></i><span>Chief Complaint</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="chiefComplaint-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/KeyPopulations/Index?module=Chief Complaint&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Key Populations</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Questions/Index?module=Chief Complaint&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Questions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--REVIEW OF SYSTEM-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#reviewOfSystem-menu">
+                            <i class="bi bi-circle"></i><span>Review of System</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="reviewOfSystem-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=Review of System&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--MEDICAL HISTORIES-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#histories-menu">
+                            <i class="bi bi-circle"></i><span>Medical History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="histories-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Risks/Index?module=Medical History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>PrEP Risk</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--CHRONIC NON-CHRONIC CONDITION-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#condition-menu">
+                            <i class="bi bi-circle"></i><span>Chronic Non-chronic Condition</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="condition-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/ICDDiagnosis/Index?module=Chronic Non-chronic Condition&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/NTGLevelOneDiagnosis/Index?module=Chronic Non-chronic Condition&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>NTG</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--GYNOBS-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#GynObs-menu">
+                            <i class="bi bi-circle"></i><span>Gyn & Obs History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="GynObs-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Contraceptives/Index?module=Gyn & Obs History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Contraceptive</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/CaCxScreeningMethods/Index?module=Gyn & Obs History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>CaCx Screening Method</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--IMMUNIZATION HISTORY-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#immunization-menu">
+                            <i class="bi bi-circle"></i><span>Immunization History</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="immunization-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineTypes/Index?module=Immunization History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Vaccine Type</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/Vaccines/Index?module=Immunization History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Vaccines</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/VaccineDoses/Index?module=Immunization History&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Vaccine Dose</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--SYSTEM EXAMINATION-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#systemExamination-menu">
+                            <i class="bi bi-circle"></i><span>System Examination</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="systemExamination-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/PhysicalSystems/Index?module=System Examination&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>Physical System</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--PrEP PLAN-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed main-link" data-bs-toggle="collapse" href="#PrEPplan-menu">
+                            <i class="bi bi-circle"></i><span>PrEP Plan</span><i class="bi bi-chevron-down ms-auto me-3" style="font-size: 12px !important;"></i>
+                        </a>
+
+                        <ul id="PrEPplan-menu" class="nav-content collapse" data-bs-parent="#PrEP-nav">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" href="~/StoppingReasons/Index?module=PrEP Plan&&parent=PrEP">
+                                    <i class="bi bi-circle"></i><span>PrEP Stopping Reason</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--ART-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#art-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>ART</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="art-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    
+                   <li class="nav-item">
+                        <a class="nav-link" href="~/SpecialDrugs/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>Special Drug</span>
+                        </a>
+                   </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ARTDrugs/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>ART Drug was on</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ARTDrugClasses/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>ART Drug Class</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TPTDrugs/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>TPT Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBDrugs/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>TB Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBIdentificationMethods/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>TB Identification Method</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Disabilities/Index?module=ART&&parent=ART">
+                            <i class="bi bi-circle"></i><span>Disability</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--TB SERVICE-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#tbService-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>TB Service</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="tbService-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBSymptoms/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>TB Symptom</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ConstitutionalSymptoms/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>Constitutional Symptom</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ConstitutionalSymptomTypes/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>Constitutional Symptom Type</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Allergies/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>Allergies</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/AllergicDrugs/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>Allergic Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBFindings/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>TB Finding</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/WHOClinicalStages/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>WHO Clinical Stage</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/WHOStagesConditions/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>WHO Stages Condition</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBSuspectingReasons/Index?module=TB Service&&parent=TB Service">
+                            <i class="bi bi-circle"></i><span>TB Suspecting Reason</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--SURGERY-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#Surgery-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Surgery</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="Surgery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ICDDiagnosis/Index?module=Surgery&&parent=Surgery">
+                            <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/NTGLevelOneDiagnosis/Index?module=Surgery&&parent=Surgery">
+                            <i class="bi bi-circle"></i><span>NTG</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--ANC-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#ANC-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Antenatal (ANC)</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="ANC-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Questions/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>Questions</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/TBSymptoms/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>TB Symptom</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Allergies/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>Allergies</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/AllergicDrugs/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>Allergic Drug</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/GynConfirmations/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>Gyn Confirmation</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PriorSensitizations/Index?module=Antenatal (ANC)&&parent=Antenatal (ANC)">
+                            <i class="bi bi-circle"></i><span>Prior Sensitization</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--POSTNATAL-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#Post-Natal" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Postnatal (PNC)</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="Post-Natal" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PreferredFeedings/Index?module=Postnatal (PNC)">
+                            <i class="bi bi-circle"></i><span>Preferred feeding</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Contraceptives/Index?module=Postnatal (PNC)&&parent=Postnatal (PNC)">
+                            <i class="bi bi-circle"></i><span>Contraceptive</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--LABOUR AND DELIVERY-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#Labour-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Labour and Delivery</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="Labour-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ReasonOfReferrals/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Reason of Referral</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PresentingParts/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Presenting Part</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Breeches/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Breech</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ModeOfDeliveries/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Mode of delivery</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/NeonatalBirthOutcomes/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Neonatal birth outcome</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/CauseOfNeonatalDeaths/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Cause of neonatal death</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/CauseOfStillBirths/Index?module=Labour and Delivery">
+                            <i class="bi bi-circle"></i><span>Cause of still birth</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--VMMC-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#vmmc-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>VMMC</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="vmmc-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/CircumcisionReasons/Index?module=VMMC">
+                            <i class="bi bi-circle"></i><span>Circumcision Reason</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/VMMCCampaigns/Index?module=VMMC">
+                            <i class="bi bi-circle"></i><span>VMMC Campaign</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ComplicationTypes/Index?module=VMMC">
+                            <i class="bi bi-circle"></i><span>Complication Type</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--FAMILY PLANNING-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#Family-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Family Planning</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="Family-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PastMedicalConditions/Index?module=Family Planning">
+                            <i class="bi bi-circle"></i><span>Past Medical Condition</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/STIRisks/Index?module=Family Planning">
+                            <i class="bi bi-circle"></i><span>STI Risk</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/FamilyPlanningClasses/Index?module=Family Planning">
+                            <i class="bi bi-circle"></i><span>Family Planning Class</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/FamilyPlanningSubClasses/Index?module=Family Planning">
+                            <i class="bi bi-circle"></i><span>Family Planning Subclass</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--PAIN SCALE-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#painScale1-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Pain Scale</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="painScale1-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PainScales/Index?module=Pain Scale">
+                            <i class="bi bi-circle"></i><span>Pain Scale</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--COVID-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#covid-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Covid</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="covid-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/CovidSymptoms/Index?module=Covid">
+                            <i class="bi bi-circle"></i><span>Covid Symptom</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--COVAX-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#covax-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Covax</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="covax-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/VaccineTypes/Index?module=Covax&&parent=Covax">
+                            <i class="bi bi-circle"></i><span>Vaccine Type</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Vaccines/Index?module=Covax&&parent=Covax">
+                            <i class="bi bi-circle"></i><span>Vaccines</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/VaccineDoses/Index?module=Covax&&parent=Covax">
+                            <i class="bi bi-circle"></i><span>Vaccine Dose</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--DEATH RECORDS-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#death-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Death Record</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="death-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="~/AnatomicAxises/Index?module=Death Record&&parent=Death Record">
+                            <i class="bi bi-circle"></i><span>Anatomic Axis</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PathologyAxises/Index?module=Death Record&&parent=Death Record">
+                            <i class="bi bi-circle"></i><span>Pathology Axis</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ICPC2Descriptions/Index?module=Death Record&&parent=Death Record">
+                            <i class="bi bi-circle"></i><span>ICPC2 Description</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ICDDiagnosis/Index?module=Death Record&&parent=Death Record">
+                            <i class="bi bi-circle"></i><span>ICD Diagnosis</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!--SERI LOG-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#log-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>CarePro Log</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="log-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="~/LogData/Index?module=Log Data">
+                            <i class="bi bi-circle"></i><span>Log</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Cervical Cancer-->
+            <li class="nav-item">
+                <a class="nav-link collapsed main-link" data-bs-target="#cervical-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-grid"></i><span>Cervical Cancer</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+
+                <ul id="cervical-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/ThermoAblationTreatmentMethod/Index?module=Cervical Cancer">
+                            <i class="bi bi-circle"></i><span>Thermo Ablation Treatment Method</span>
+                        </a>
+                    </li>
+                     
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/LeepsTreatmentMethod/Index?module=Cervical Cancer">
+                            <i class="bi bi-circle"></i><span>Leeps Treatment Method</span>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/InterCourseStatus/Index?module=Cervical Cancer">
+                            <i class="bi bi-circle"></i><span>Inter Course Status</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <main id="main" class="main">
+        <section class="section">
+            @if (specialTag?.Length > 0)
+            {
+                <p class="text-center small" style="font-size:18px;color:#ff0000">(@specialTag)</p>
+            }
+            @RenderBody()
+        </section>
+
+        <div class="loader" style="display:none;"></div>
+    </main>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/cdns/jquery-ui.js"></script>
+    <script src="~/js/cdns/select2.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,80 @@
+patch:
+  description: Update specific asset by id
+  summary: Update specific asset by id
+  operationId: updateAssetById
+  tags:
+    - Assets
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    description: Asset object that needs to be updated
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/assetDto.yaml
+  responses:
+    "200":
+      description: Asset updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Asset updated successfully
+              data:
+                $ref: ../../components/schemas/asset.yaml
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific asset by id
+  summary: Delete specific asset by id
+  operationId: deleteAssetById
+  tags:
+    - Assets
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: Asset deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Asset deleted successfully
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

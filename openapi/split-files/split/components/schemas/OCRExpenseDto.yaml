@@ -1,0 +1,6 @@
+type: object
+properties:
+  filePath:
+    type: string
+    example: >-
+      https://www.ird.govt.nz/-/media/project/ir/home/documents/forms-and-guides/ir3/2020/ir3g-2020.pdf

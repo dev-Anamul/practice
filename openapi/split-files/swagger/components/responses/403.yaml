@@ -1,0 +1,16 @@
+description: you have no access to this resource
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 403
+        status:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: you have no access to this resource

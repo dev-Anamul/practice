@@ -1,0 +1,127 @@
+post:
+  description: Create a new user
+  summary: Create a new user
+  operationId: createUser
+  tags:
+    - Admin
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/UserDto.yaml
+            - type: object
+              properties:
+                role:
+                  type: string
+                  enum:
+                    - customer
+                    - admin
+                    - superadmin
+                  example: customer
+                status:
+                  type: string
+                  enum:
+                    - pending
+                    - approved
+                    - rejected
+                  example: approved
+  responses:
+    "201":
+      description: user created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: user created successfully
+              data:
+                $ref: ../../components/schemas/User.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/users/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/users
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: Get all users
+  summary: Get all users
+  operationId: getUsers
+  tags:
+    - Admin
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/dynamic.yaml
+  responses:
+    "200":
+      description: users fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: users fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/User.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/users?page=1&limit=10
+                  firstPage:
+                    type: string
+                    example: /api/v1/users?page=1&limit=10
+                  lastPage:
+                    type: string
+                    example: /api/v1/users?page=10&limit=10
+                  nextPage:
+                    type: string
+                    example: /api/v1/users?page=2&limit=10
+                  prevPage:
+                    type: string
+                    example: /api/v1/users?page=1&limit=10
+              pagination:
+                $ref: ../../components/schemas/pagination.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

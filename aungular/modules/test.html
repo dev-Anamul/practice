@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Button to Open Modal -->
+    <button
+      id="openModalButton"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8 ml-8"
+    >
+      Create Post
+    </button>
+
+    <!-- Modal Background -->
+    <div
+      id="modalBackground"
+      class="hidden fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
+    ></div>
+
+    <!-- Modal -->
+    <div
+      id="modal"
+      class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg z-50"
+    >
+      <!-- Modal Header -->
+      <div class="bg-gray-200 px-4 py-2 rounded-t-lg">
+        <h2 class="text-xl font-bold">Create Post</h2>
+      </div>
+      <!-- Modal Body -->
+      <div class="p-4">
+        <form id="createPostForm">
+          <div class="mb-4">
+            <label for="title" class="block text-gray-700 font-bold mb-2"
+              >Title:</label
+            >
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="content" class="block text-gray-700 font-bold mb-2"
+              >Content:</label
+            >
+            <textarea
+              id="content"
+              name="content"
+              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <div class="text-right">
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Create
+            </button>
+            <button
+              id="closeModalButton"
+              type="button"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const openModalButton = document.getElementById("openModalButton");
+      const modalBackground = document.getElementById("modalBackground");
+      const modal = document.getElementById("modal");
+      const closeModalButton = document.getElementById("closeModalButton");
+
+      // Function to open the modal
+      function openModal() {
+        modal.classList.remove("hidden");
+        modalBackground.classList.remove("hidden");
+        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        modal.classList.add("hidden");
+        modalBackground.classList.add("hidden");
+        document.body.style.overflow = ""; // Re-enable scrolling when modal is closed
+      }
+
+      // Event listener to open modal when the button is clicked
+      openModalButton.addEventListener("click", openModal);
+
+      // Event listener to close modal when close button is clicked
+      closeModalButton.addEventListener("click", closeModal);
+
+      // Event listener to close modal when clicking outside the modal
+      modalBackground.addEventListener("click", closeModal);
+
+      // Prevent modal from closing when clicking inside the modal
+      modal.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+
+      // Handle form submission
+      const createPostForm = document.getElementById("createPostForm");
+      createPostForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        // Get form data
+        const formData = new FormData(createPostForm);
+        const title = formData.get("title");
+        const content = formData.get("content");
+
+        // Here, you can submit the form data to your server or perform any other actions
+        console.log("Title:", title);
+        console.log("Content:", content);
+
+        // Close the modal
+        closeModal();
+      });
+    </script>
+  </body>
+</html>

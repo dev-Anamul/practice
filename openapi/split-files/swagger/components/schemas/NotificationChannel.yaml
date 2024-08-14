@@ -1,0 +1,12 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        example: 5e9d5b2b4f9f9b0017b5e7a0
+      logo:
+        type: string
+        example: >-
+          https://res.cloudinary.com/dxk0bmtei/image/upload/v1587360000/5e9d5b2b4f9f9b0017b5e7a0.png
+  - $ref: ./NotificationChannelDto.yaml
+  - $ref: ./Timestamp.yaml

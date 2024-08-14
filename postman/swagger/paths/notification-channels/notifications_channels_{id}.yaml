@@ -1,0 +1,141 @@
+get:
+  description: Get get notification channel by id
+  summary: Get get notification channel by id
+  operationId: getNotificationChannelById
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: notification channel fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel fetched successfully
+              data:
+                $ref: ../../components/schemas/NotificationChannel.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/notification-channels
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: Update specific notification channel by id
+  summary: Update specific notification channel by id
+  operationId: updateNotificationChannelById
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            channelName:
+              type: string
+              example: channel one
+            description:
+              type: string
+              example: lorem ipsum dolor sit amet consectetur adipisicing elit
+            logo:
+              type: string
+              format: binary
+  responses:
+    "200":
+      description: notification channel updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel updated successfully
+              data:
+                $ref: ../../components/schemas/NotificationChannel.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/notification-channels
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific notification channel by id
+  summary: Delete specific notification channel by id
+  operationId: deleteNotificationChannelById
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: notification channel deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel deleted successfully
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

@@ -1,0 +1,56 @@
+get:
+  description: Get all ocr expenses for admin
+  summary: Get all ocr expenses for admin
+  operationId: getAdminOCRExpenses
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/expand.yaml
+  responses:
+    "200":
+      description: OCR expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: OCR expenses fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/admin/ocr-expenses
+                  all_users:
+                    type: string
+                    example: /api/v1/admin/users
+                  all_channels:
+                    type: string
+                    example: /api/v1/notification/channels
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

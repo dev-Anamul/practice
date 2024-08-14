@@ -1,0 +1,44 @@
+get:
+  description: Get all income sources for admin
+  summary: Get all admin income sources
+  operationId: getAdminIncomeSources
+  tags:
+    - Income Source
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/dynamic.yaml
+  responses:
+    "200":
+      description: Income sources retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Income sources retrieved successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/IncomeSource.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

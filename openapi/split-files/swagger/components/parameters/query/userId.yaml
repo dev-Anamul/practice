@@ -1,0 +1,6 @@
+in: query
+name: userId
+description: ID of the user
+schema:
+  type: string
+  example: 64d268cdeef8c84bb18912db

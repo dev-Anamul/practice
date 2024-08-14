@@ -1,0 +1,11 @@
+type: object
+properties:
+  fiscalYear:
+    type: string
+    example: 2020-2021
+  startDate:
+    type: string
+    example: "2020-04-01"
+  endDate:
+    type: string
+    example: "2021-03-31"

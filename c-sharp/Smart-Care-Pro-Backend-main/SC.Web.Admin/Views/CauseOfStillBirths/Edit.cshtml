@@ -1,0 +1,47 @@
+﻿@model Domain.Entities.CauseOfStillbirth
+
+@{
+   
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var module = Context.Request.Query["module"];
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <div class="card">
+         <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+            <!--HEADER-->
+            <div class="pagetitle">
+               <h4 class="card-title fs-2 fw-bold mb-0">Cause of still birth</h4>
+               <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+               <hr class="mt-0">
+            </div>
+
+            <!--FORM START-->
+            <form class="row g-1" method="post" asp-action="Edit" asp-controller="CauseOfStillBirths">
+               <input type="text" asp-for="Oid" hidden />
+               <input type="hidden" name="module" value="@module" />
+
+               <!--CauseOfStillBirth-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90" data-val-length-min="2" data-val-length="Cause of still birth should be atleast 2 digits.">
+                     <label class="required" asp-for="Description">Cause of still birth</label>
+                     <span asp-validation-for="Description" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--ACTIONS-->
+               <div class="col-12 mt-0 mt-3 text-center">
+                  <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit">
+                     <i class="bi bi-check2-circle"></i> Submit
+                  </button>
+                  <a href="/CauseOfStillBirths/Index?module=@module" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,99 @@
+get:
+  description: get specific income type based on id
+  summary: get specific income type based on id
+  operationId: getIncomeTypeById
+  tags:
+    - Income-type
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: income type fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income type fetched successfully
+              data:
+                $ref: "../../components/schemas/Income-types.yaml"
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: update specific income type based on id
+  summary: update specific income type based on id
+  operationId: updateIncomeTypeById
+  tags:
+    - Income-type
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/Income-types-dto.yaml
+  responses:
+    "200":
+      description: income type updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income type updated successfully
+              data:
+                $ref: "../../components/schemas/Income-types.yaml"
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: delete specific income type based on id
+  summary: delete specific income type based on id
+  operationId: deleteIncomeTypeById
+  tags:
+    - Income-type
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: income type deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income type deleted successfully
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

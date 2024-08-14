@@ -1,0 +1,128 @@
+post:
+  description: Create a new ocr expense entry for the currently logged in user
+  summary: Create a new ocr expense entry
+  operationId: createOCRExpense
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            filePath:
+              type: string
+              format: binary
+  responses:
+    "201":
+      description: ocr expense created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expense created successfully
+              data:
+                $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: Get all ocr expenses for the currently logged in user
+  summary: Get all ocr expenses
+  operationId: getOCRExpenses
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/fiscal.yaml
+    - $ref: ../../components/parameters/query/userId.yaml
+  responses:
+    "200":
+      description: ocr expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expenses fetched successfully
+              data:
+                type: object
+                properties:
+                  expenses:
+                    type: array
+                    items:
+                      $ref: ../../components/schemas/OCRExpense.yaml
+                  total:
+                    type: integer
+                    format: int32
+                    example: 1
+                  page:
+                    type: integer
+                    format: int32
+                    example: 1
+                  limit:
+                    type: integer
+                    format: int32
+                    example: 10
+                  pages:
+                    type: integer
+                    format: int32
+                    example: 1
+                example:
+                  expenses:
+                    - id: 1
+                      title: Expense 1
+                      description: Expense 1 description
+                      amount: 100
+                      createdAt: "2021-01-01T00:00:00.000Z"
+                  total: 1
+                  page: 1
+                  limit: 10
+                  pages: 1
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

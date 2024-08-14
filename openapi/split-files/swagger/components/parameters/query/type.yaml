@@ -1,0 +1,7 @@
+in: query
+name: type
+description: type of message
+required: false
+schema:
+  type: string
+  example: receive

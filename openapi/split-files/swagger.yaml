@@ -1,0 +1,5578 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Easy Tax Application
+  description: "Introducing our user-friendly Easy Tax REST API, designed to simplify tax-related data integration. With our intuitive platform, preparing and submitting your taxes has never been easier. Say goodbye to complicated forms and confusing jargon; our application guides you through each step with clear, plain-language instructions."
+  contact:
+    name: Pixfar developer team
+    url: "https://pixfar.com"
+    email: pixfar@gmail.com
+servers:
+  - description: dev
+    url: "http://localhost:6050/api/v1"
+  - description: Production
+    url: "https://api.easy-tax.pixfar.com/api/v1"
+  - description: Easy Tax API
+    url: "https://api-fluxx.fluxx.co.nz/api/v1"
+tags:
+  - name: Auth
+    description: Authentication endpoints (public)
+  - name: Expense
+    description: Expense endpoint (private)
+  - name: OCR
+    description: OCR endpoints (private)
+  - name: Category
+    description: Category endpoints (private)
+  - name: Income Source
+    description: Income Source endpoints (private)
+  - name: Admin
+    description: User endpoint (private & admin)
+  - name: Notification
+    description: notification endpoints (private)
+paths:
+  /auth/signup:
+    post:
+      tags:
+        - Auth
+      description: this endpoint for user registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                - $ref: "#/components/schemas/UserDto"
+              required:
+                - email
+                - password
+                - firstName
+                - lastName
+                - mobile
+                - dateOfBirth
+                - termsAndConditions
+      responses:
+        "200":
+          description: user registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user registered successfully
+                  data:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/signup
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/login:
+    post:
+      description: this endpoint for user login
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: example@gmail.com
+                password:
+                  type: string
+                  example: 123456
+                notificationToken:
+                  type: string
+                  example: 123456
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: user logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user logged in successfully
+                  data:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/login
+                      signup:
+                        type: string
+                        example: /api/v1/auth/signup
+        "400":
+          $ref: "#/components/responses/400"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/forgot-password:
+    post:
+      description: this endpoint for recover password by email address if user forgot password
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: null
+              required:
+                - email
+      responses:
+        "200":
+          description: password reset link sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: password reset link sent successfully
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/forgot-password
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/reset-password:
+    post:
+      description: this endpoint for reset password by email address if user forgot password
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                  example: 123456
+                confirmPassword:
+                  type: string
+                  example: 123456
+              required:
+                - newPassword
+                - confirmPassword
+      responses:
+        "200":
+          description: password reset successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: password reset successfully. Login with new password
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/reset-password/64d268cdeef8c84bb18912db
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/update-password:
+    patch:
+      description: Update password of the logged in user
+      tags:
+        - Auth
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                  example: 123456
+                newPassword:
+                  type: string
+                  example: 1234567
+                confirmPassword:
+                  type: string
+                  example: 1234567
+              required:
+                - oldPassword
+                - newPassword
+                - confirmPassword
+      responses:
+        "200":
+          description: password updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: password updated successfully. please login again
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/update-password
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/update-profile:
+    patch:
+      description: Update profile information of the logged in user
+      tags:
+        - Auth
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UpdateUserDto"
+                - type: object
+                  properties:
+                    avatar:
+                      type: string
+                      format: binary
+                      description: avatar image file
+      responses:
+        "200":
+          description: user profile updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user profile updated successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/update-profile
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/profile:
+    get:
+      description: Get the profile of the currently logged in user
+      tags:
+        - Auth
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: user profile fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user profile fetched successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/auth/profile
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /auth/delete-profile:
+    delete:
+      description: Delete currently logged in user profile
+      tags:
+        - Auth
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: user profile deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user profile deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /expenses:
+    get:
+      description: Get all expenses of the currently logged in user
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/expand"
+        - $ref: "#/components/parameters/dynamic"
+      responses:
+        "200":
+          description: expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expenses fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Expense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expense
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+                      firstPage:
+                        type: string
+                        example: /api/v1/expense?page=1&limit=10
+                      lastPage:
+                        type: string
+                        example: /api/v1/expense?page=10&limit=10
+                      nextPage:
+                        type: string
+                        example: /api/v1/expense?page=2&limit=10
+                      prevPage:
+                        type: string
+                        example: /api/v1/expense?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    post:
+      description: Create a new expense for the currently logged in user
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/ExpenseDto"
+                - type: object
+                  properties:
+                    filePath:
+                      type: string
+                      format: binary
+                      description: The file to upload.
+      responses:
+        "201":
+          description: expense created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expense created successfully
+                  data:
+                    $ref: "#/components/schemas/Expense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expense
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/expenses/{id}":
+    get:
+      description: Get specific expense of the currently logged in user by id
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: expense fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expense fetched successfully
+                  data:
+                    $ref: "#/components/schemas/Expense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/expenses
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific expense of the currently logged in user by id
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    gstAmount:
+                      type: number
+                      format: float
+                      example: 100
+                    claimableAmount:
+                      type: number
+                      format: float
+                      example: 100
+                    ocrAmount:
+                      type: number
+                      format: float
+                      example: 100
+                    isAsset:
+                      type: boolean
+                      example: true
+                    filePath:
+                      type: string
+                      example: /path/to/file
+                - $ref: "#/components/schemas/ExpenseDto"
+      responses:
+        "200":
+          description: expense updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expense updated successfully
+                  data:
+                    $ref: "#/components/schemas/Expense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/expenses
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific expense of the currently logged in user by id
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        "200":
+          description: expense deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expense deleted successfully
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /expenses/bulk:
+    post:
+      description: Create bulk expenses for the currently logged in user
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expenses:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/ExpenseDto"
+      responses:
+        "201":
+          description: expenses created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expenses created successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Expense"
+                      total:
+                        type: integer
+                        format: int32
+                        example: 1
+                      page:
+                        type: integer
+                        format: int32
+                        example: 1
+                      limit:
+                        type: integer
+                        format: int32
+                        example: 10
+                      pages:
+                        type: integer
+                        format: int32
+                        example: 1
+                    example:
+                      expenses:
+                        - id: 1
+                          title: Expense 1
+                          description: Expense 1 description
+                          amount: 100
+                          createdAt: "2021-01-01T00:00:00.000Z"
+                          updatedAt: "2021-01-01T00:00:00.000Z"
+                          userId: 1
+                      total: 1
+                      page: 1
+                      limit: 10
+                      pages: 1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expense
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /expenses/csv:
+    get:
+      description: download csv expense
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: csv expense downloaded successfully
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename=expense.csv
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /expenses/total-by-category:
+    get:
+      description: Get total cost by category
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    example: 1000
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 5f9d5b9b9d5b9f9d5b9d5b9f
+                      type:
+                        type: string
+                        enum:
+                          - income
+                          - expense
+                        example: expense
+                      name:
+                        type: string
+                        example: IRD
+                      description:
+                        type: string
+                        example: This is a description
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2020-10-30T00:00:00.000Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2020-10-30T00:00:00.000Z"
+                      __v:
+                        type: number
+                        example: 0
+  /ocr-expenses:
+    post:
+      description: Create a new ocr expense entry for the currently logged in user
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                filePath:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: ocr expense created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense created successfully
+                  data:
+                    $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all ocr expenses for the currently logged in user
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/fiscal"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        "200":
+          description: ocr expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expenses fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/OCRExpense"
+                      total:
+                        type: integer
+                        format: int32
+                        example: 1
+                      page:
+                        type: integer
+                        format: int32
+                        example: 1
+                      limit:
+                        type: integer
+                        format: int32
+                        example: 10
+                      pages:
+                        type: integer
+                        format: int32
+                        example: 1
+                    example:
+                      expenses:
+                        - id: 1
+                          title: Expense 1
+                          description: Expense 1 description
+                          amount: 100
+                          createdAt: "2021-01-01T00:00:00.000Z"
+                      total: 1
+                      page: 1
+                      limit: 10
+                      pages: 1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/ocr-expenses/{id}":
+    get:
+      description: Get single ocr expense
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: ocr expense fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense fetched successfully
+                  data:
+                    $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/ocr-expenses
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific ocr expense by id
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/OCRExpenseDto"
+                - type: object
+                  properties:
+                    imageUrl:
+                      type: string
+                      format: binary
+      responses:
+        "200":
+          description: ocr expense updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense updated successfully
+                  data:
+                    $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/ocr-expenses
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific ocr expense by id
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: ocr expense deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense deleted successfully
+                  data:
+                    $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/ocr-expenses
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/ocr-expenses:
+    get:
+      description: Get all ocr expenses for admin
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/expand"
+      responses:
+        "200":
+          description: OCR expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: OCR expenses fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/admin/ocr-expenses
+                      all_users:
+                        type: string
+                        example: /api/v1/admin/users
+                      all_channels:
+                        type: string
+                        example: /api/v1/notification/channels
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /ocr-expenses/process:
+    post:
+      description: process ocr and add it ot the expense list
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ocrIds:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - 5e9d5b2b4f9f9b0017b5e7a0
+                    - 5e9d5b2b4f9f9b0017b5e7a1
+      responses:
+        "201":
+          description: ocr expense created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense created successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/ocr-expenses
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /ocr-expenses/report:
+    get:
+      description: Get single ocr expense
+      tags:
+        - OCR
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/fiscal"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        "200":
+          description: ocr expense fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: ocr expense fetched successfully
+                  data:
+                    $ref: "#/components/schemas/OCRExpense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/ocr-expenses
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /categories:
+    post:
+      description: Create a new category for the currently logged in user
+      tags:
+        - Category
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryDto"
+      responses:
+        "201":
+          description: category created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: category created successfully
+                  data:
+                    $ref: "#/components/schemas/Category"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/categories
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all categories of the currently logged in user
+      tags:
+        - Category
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+      responses:
+        "200":
+          description: categories fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: categories fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Category"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/categories?page=1&limit=10
+                      first:
+                        type: string
+                        example: /api/v1/categories?page=1&limit=10
+                      last:
+                        type: string
+                        example: /api/v1/categories?page=1&limit=10
+                      prev:
+                        type: string
+                        example: /api/v1/categories?page=1&limit=10
+                      next:
+                        type: string
+                        example: /api/v1/categories?page=1&limit=10
+                      all:
+                        type: string
+                        example: /api/v1/categories
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/categories/{id}":
+    get:
+      description: Get single category of the currently logged in user by id
+      tags:
+        - Category
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: category fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: category fetched successfully
+                  data:
+                    $ref: "#/components/schemas/Category"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/categories
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific category of the currently logged in user by id
+      tags:
+        - Category
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryDto"
+      responses:
+        "200":
+          description: category updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: category updated successfully
+                  data:
+                    $ref: "#/components/schemas/Category"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/categories
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific category of the currently logged in user by id
+      tags:
+        - Category
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: category deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: category deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/categories/{id}/expenses":
+    get:
+      description: Get all expenses by category ID
+      tags:
+        - Expense
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/expand"
+      responses:
+        "200":
+          description: Expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Expenses fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Expense"
+                      total:
+                        type: integer
+                        format: int32
+                        example: 1
+                      page:
+                        type: integer
+                        format: int32
+                        example: 1
+                      limit:
+                        type: integer
+                        format: int32
+                        example: 10
+                      pages:
+                        type: integer
+                        format: int32
+                        example: 1
+                    example:
+                      expenses:
+                        - id: 1
+                          title: Expense 1
+                          description: Expense 1 description
+                      total: 1
+                      page: 1
+                      limit: 10
+                      pages: 1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0/expenses
+                      all:
+                        type: string
+                        example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0/expenses
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-types:
+    get:
+      description: Get specific income type based on id
+      tags:
+        - Income-type
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/expand"
+      responses:
+        "200":
+          description: income type fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income type fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/paths/~1income-types/post/responses/201/content/application~1json/schema"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/income-types/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/income-types
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    post:
+      description: create new income type
+      tags:
+        - Income-type
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: IRD
+                description:
+                  type: string
+                  example: This is a description
+      responses:
+        "201":
+          description: income type created successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5e9d5b2b4f9f9b0017b5e7a0
+                  - $ref: "#/paths/~1income-types/post/requestBody/content/application~1json/schema"
+                  - $ref: "#/components/schemas/Timestamp"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/income-types/{id}":
+    get:
+      description: get specific income type based on id
+      tags:
+        - Income-type
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: income type fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1income-types/post/responses/201/content/application~1json/schema"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: update specific income type based on id
+      tags:
+        - Income-type
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/paths/~1income-types/post/requestBody/content/application~1json/schema"
+      responses:
+        "200":
+          description: income type updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1income-types/post/responses/201/content/application~1json/schema"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: delete specific income type based on id
+      tags:
+        - Income-type
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: income type deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income type deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /assets:
+    get:
+      description: Get all expenses for the currently logged in user
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/expand"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        "200":
+          description: expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expenses fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Expense"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/assets/{id}":
+    patch:
+      description: Update specific asset by id
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        description: Asset object that needs to be updated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/assetDto"
+      responses:
+        "200":
+          description: Asset updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Asset updated successfully
+                  data:
+                    $ref: "#/components/schemas/asset"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific asset by id
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: Asset deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Asset deleted successfully
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/assets/{id}/depreciation":
+    get:
+      description: get all depreciation based on assets id
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: depreciation fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: depreciation fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      depreciation:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            assetId:
+                              type: string
+                              example: 5e9d5b2b4f9f9b0017b5e7a0
+                            fiscalYear:
+                              type: string
+                              example: 2020-2021
+                            depreciation:
+                              type: number
+                              example: 1000
+                            accumulatedDepreciation:
+                              type: number
+                              example: 1000
+                            depreciationRate:
+                              type: number
+                              example: 1000
+                            openingValue:
+                              type: number
+                              example: 1000
+                            endingValue:
+                              type: number
+                              example: 1000
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /depreciation:
+    post:
+      description: calculate year end depreciation
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: depreciation calculated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: depreciation calculated successfully
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-sources:
+    post:
+      description: Create a new income source for the currently logged in user
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/incomeSourceDto"
+      responses:
+        "201":
+          description: income source created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income source created successfully
+                  data:
+                    $ref: "#/components/schemas/IncomeSource"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/income-sources/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/income-sources
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all income sources of the currently logged in user
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+      responses:
+        "200":
+          description: income sources fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income sources fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/IncomeSource"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/income-sources?page=1&limit=10
+                      firstPage:
+                        type: string
+                        example: /api/v1/income-sources?page=1&limit=10
+                      lastPage:
+                        type: string
+                        example: /api/v1/income-sources?page=10&limit=10
+                      nextPage:
+                        type: string
+                        example: /api/v1/income-sources?page=2&limit=10
+                      prevPage:
+                        type: string
+                        example: /api/v1/income-sources?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/income-sources/{id}":
+    get:
+      description: Get single income source of the currently logged in user by id
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: income source fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income source fetched successfully
+                  data:
+                    $ref: "#/components/schemas/IncomeSource"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/income-sources/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/income-sources
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific income source of the currently logged in user by id
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/incomeSourceDto"
+      responses:
+        "200":
+          description: income source updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income source updated successfully
+                  data:
+                    $ref: "#/components/schemas/IncomeSource"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/income-sources/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/income-sources
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific income source of the currently logged in user by id
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: income source deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: income source deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/income-sources:
+    get:
+      description: Get all income sources
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/dynamic"
+      responses:
+        "200":
+          description: Income sources retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Income sources retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/IncomeSource"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-sources/daily-income:
+    get:
+      description: Get daily Income of a user
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfDays"
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      dailyExpense:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              example: 2020-04-20T00:00:00.000Z
+                            totalExpense:
+                              type: integer
+                              format: int32
+                              example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-sources/monthly-income:
+    get:
+      description: Get monthly Income
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfMonths"
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      monthlyExpense:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            month:
+                              type: string
+                              example: 2020-04
+                            totalExpense:
+                              type: integer
+                              format: int32
+                              example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-sources/income-by-category:
+    get:
+      description: Get total cost by category
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    example: 1000
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 5f9d5b9b9d5b9f9d5b9d5b9f
+                      type:
+                        type: string
+                        enum:
+                          - income
+                          - expense
+                        example: expense
+                      name:
+                        type: string
+                        example: IRD
+                      description:
+                        type: string
+                        example: This is a description
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2020-10-30T00:00:00.000Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2020-10-30T00:00:00.000Z"
+                      __v:
+                        type: number
+                        example: 0
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /income-sources/csv:
+    get:
+      description: Get all income sources of the currently logged in user
+      tags:
+        - Income Source
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: income sources fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      path:
+                        type: string
+                        example: /income-sources
+  /admin/users:
+    post:
+      description: Create a new user
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UserDto"
+                - type: object
+                  properties:
+                    role:
+                      type: string
+                      enum:
+                        - customer
+                        - admin
+                        - superadmin
+                      example: customer
+                    status:
+                      type: string
+                      enum:
+                        - pending
+                        - approved
+                        - rejected
+                      example: approved
+      responses:
+        "201":
+          description: user created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user created successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/users/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/users
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all users
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/dynamic"
+      responses:
+        "200":
+          description: users fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: users fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/users?page=1&limit=10
+                      firstPage:
+                        type: string
+                        example: /api/v1/users?page=1&limit=10
+                      lastPage:
+                        type: string
+                        example: /api/v1/users?page=10&limit=10
+                      nextPage:
+                        type: string
+                        example: /api/v1/users?page=2&limit=10
+                      prevPage:
+                        type: string
+                        example: /api/v1/users?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/admin/users/{id}":
+    get:
+      description: Get single user by id
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: user fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user fetched successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/users/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/users
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific user by id
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UpdateUserDto"
+                - type: object
+                  properties:
+                    role:
+                      type: string
+                      enum:
+                        - customer
+                        - admin
+                        - superadmin
+                      example: customer
+                    status:
+                      type: string
+                      enum:
+                        - pending
+                        - approved
+                        - rejected
+                      example: approved
+      responses:
+        "200":
+          description: user updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user updated successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/users/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/users
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific user by id
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: user deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: user deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/expenses:
+    get:
+      description: Get all expenses of the currently logged in user
+      tags:
+        - Admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/expand"
+        - $ref: "#/components/parameters/dynamic"
+      responses:
+        "200":
+          description: expenses fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: expenses fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      expenses:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Expense"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/expense
+                      login:
+                        type: string
+                        example: /api/v1/auth/login
+                      firstPage:
+                        type: string
+                        example: /api/v1/expense?page=1&limit=10
+                      lastPage:
+                        type: string
+                        example: /api/v1/expense?page=10&limit=10
+                      nextPage:
+                        type: string
+                        example: /api/v1/expense?page=2&limit=10
+                      prevPage:
+                        type: string
+                        example: /api/v1/expense?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "500":
+          $ref: "#/components/responses/500"
+  /notifications:
+    get:
+      description: get all notifications
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+      responses:
+        "200":
+          description: notifications fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notifications fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      notifications:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Notification"
+                      total:
+                        type: integer
+                        format: int32
+                        example: 1
+                      limit:
+                        type: integer
+                        format: int32
+                        example: 10
+                      page:
+                        type: integer
+                        format: int32
+                        example: 1
+                      pages:
+                        type: integer
+                        format: int32
+                        example: 1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+                      first:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+                      prev:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+                      next:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+                      last:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/{id}":
+    get:
+      description: Get a notification based on the id
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: notification fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification fetched successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/users/{id}":
+    post:
+      description: this endpoint for create notification
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/NotificationDto"
+                - type: object
+                  properties:
+                    imageUrl:
+                      type: string
+                      format: binary
+      responses:
+        "201":
+          description: notification created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification created successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /notifications/users/many:
+    post:
+      description: this endpoint for create notification
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/NotificationDto"
+                - type: object
+                  properties:
+                    imageUrl:
+                      type: string
+                      format: binary
+                    ids:
+                      type: array
+                      items:
+                        type: string
+      responses:
+        "201":
+          description: notification created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification created successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /notifications/users/all:
+    post:
+      description: send notification to all users
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/NotificationDto"
+                - type: object
+                  properties:
+                    imageUrl:
+                      type: string
+                      format: binary
+      responses:
+        "201":
+          description: notification send successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification created successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/{id}/read":
+    patch:
+      description: Update notification read status by id
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                read:
+                  type: boolean
+                  example: true
+      responses:
+        "200":
+          description: notification read status updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification read status updated successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/notifications:
+    get:
+      description: Get all the notification for admin user
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/expand"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+      responses:
+        "200":
+          description: notifications fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notifications fetched successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/admin/notifications/{id}":
+    get:
+      description: Get Single notification based on id
+      tags:
+        - Notification
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: notification fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification fetched successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notifications
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /notifications/channels:
+    post:
+      description: add notification channel
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/NotificationChannelDto"
+                - type: object
+                  properties:
+                    logo:
+                      type: string
+                      format: binary
+      responses:
+        "201":
+          description: notification channel created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel created successfully
+                  data:
+                    $ref: "#/components/schemas/NotificationChannel"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notification-channels
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: get all notification channels
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/fields"
+      responses:
+        "200":
+          description: notification channels fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channels fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/NotificationChannel"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notification-channels
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/channels/{id}":
+    get:
+      description: Get get notification channel by id
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: notification channel fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel fetched successfully
+                  data:
+                    $ref: "#/components/schemas/NotificationChannel"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notification-channels
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific notification channel by id
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                channelName:
+                  type: string
+                  example: channel one
+                description:
+                  type: string
+                  example: lorem ipsum dolor sit amet consectetur adipisicing elit
+                logo:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: notification channel updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel updated successfully
+                  data:
+                    $ref: "#/components/schemas/NotificationChannel"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/notification-channels
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific notification channel by id
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: notification channel deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/channels/{id}/users":
+    get:
+      description: Get all the members belogs to a channel
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: Users belogs to this channel fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel fetched successfully
+                  data:
+                    $ref: "#/components/schemas/User"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0/users/5e9d5b2b4f9f9b0017b5e7a0
+                      all_users:
+                        type: string
+                        example: /api/v1/admin/users
+                      all_channels:
+                        type: string
+                        example: /api/v1/notification/channels
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    post:
+      description: Add members to a channel
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userIds:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - 5e9d5b2b4f9f9b0017b5e7a0
+                    - 5e9d5b2b4f9f9b0017b5e7a0
+      responses:
+        "200":
+          description: Users successfully added to channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Users successfully added to channel
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/channels/{id}/users/{userId}":
+    delete:
+      description: Get all the members belogs to a channel
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+        - $ref: "#/components/parameters/userIdPathParam"
+      responses:
+        "200":
+          description: user successfully removed from channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification channel fetched successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/notifications/channels/{id}/notify":
+    post:
+      description: Notify users belogs to a channel
+      tags:
+        - Notification Channel
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/NotificationDto"
+                - type: object
+                  properties:
+                    imageUrl:
+                      type: string
+                      format: binary
+      responses:
+        "200":
+          description: sent notification successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: notification sent successfully
+                  data:
+                    $ref: "#/components/schemas/Notification"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /dashboard:
+    get:
+      description: Get all the members belogs to a channel
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      topExpense:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      topIncome:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalExpense:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalIncome:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalClaimableAmount:
+                        type: integer
+                        format: int32
+                        example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /dashboard/daily-expense:
+    get:
+      description: Get daily expenses of a user
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfDays"
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      dailyExpense:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              example: 2020-04-20T00:00:00.000Z
+                            totalExpense:
+                              type: integer
+                              format: int32
+                              example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /dashboard/monthly-expense:
+    get:
+      description: Get monthly expense
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfMonths"
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      monthlyExpense:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            month:
+                              type: string
+                              example: 2020-04
+                            totalExpense:
+                              type: integer
+                              format: int32
+                              example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/dashboard:
+    get:
+      description: Get all the members belogs to a channel
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      topExpense:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      topIncome:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalExpense:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalIncome:
+                        type: integer
+                        format: int32
+                        example: 1000
+                      totalClaimableAmount:
+                        type: integer
+                        format: int32
+                        example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/dashboard/daily-income-expense:
+    get:
+      description: Get daily expenses of a user
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfDays"
+      responses:
+        "200":
+          description: dashboard data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: dashboard data fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      dailyExpense:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              example: 2020-04-20T00:00:00.000Z
+                            totalExpense:
+                              type: integer
+                              format: int32
+                              example: 1000
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /admin/dashboard/monthly-income-expense:
+    get:
+      description: Get all income sources
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/numOfMonths"
+      responses:
+        "200":
+          description: Income sources retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Income sources retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/IncomeSource"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /settings:
+    post:
+      description: Create or update a setting
+      operationId: createOrUpdateSetting
+      tags:
+        - Setting
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/settingDto"
+      responses:
+        "201":
+          description: Setting created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Setting created successfully
+                  data:
+                    $ref: "#/components/schemas/setting"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all settings
+      operationId: getAllSettings
+      tags:
+        - Setting
+      responses:
+        "200":
+          description: Settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Settings retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/setting"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  /tax-slabs:
+    post:
+      description: add a new tax slab
+      tags:
+        - Tax Slab
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/TaxSlabDto"
+      responses:
+        "201":
+          description: tax slab created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: tax slab created successfully
+                  data:
+                    $ref: "#/components/schemas/TaxSlab"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/tax-slabs
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all tax slabs
+      tags:
+        - Tax Slab
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/page"
+      responses:
+        "200":
+          description: tax slabs fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: tax slabs fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TaxSlab"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/tax-slabs
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/tax-slabs/{id}":
+    get:
+      description: Get single tax slab
+      tags:
+        - Tax Slab
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: tax slab fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: tax slab fetched successfully
+                  data:
+                    $ref: "#/components/schemas/TaxSlab"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/tax-slabs
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific tax slab by id
+      tags:
+        - Tax Slab
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/TaxSlabDto"
+      responses:
+        "200":
+          description: tax slab updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: tax slab updated successfully
+                  data:
+                    $ref: "#/components/schemas/TaxSlab"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/tax-slabs
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific tax slab by id
+      tags:
+        - Tax Slab
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: tax slab deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: tax slab deleted successfully
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /support-messages:
+    post:
+      description: Create a new support message
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportMessageDto"
+      responses:
+        "201":
+          description: support message created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message created successfully
+                  data:
+                    $ref: "#/components/schemas/SupportMessage"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/support-messages/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/support-messages
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all support messages
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/search"
+        - $ref: "#/components/parameters/expand"
+        - $ref: "#/components/parameters/type"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support messages retrieved successfully
+                  data:
+                    $ref: "#/components/schemas/SupportMessage"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/support-messages?page=1&limit=10
+                      first:
+                        type: string
+                        example: /api/v1/support-messages?page=1&limit=10
+                      prev:
+                        type: string
+                        example: /api/v1/support-messages?page=1&limit=10
+                      next:
+                        type: string
+                        example: /api/v1/support-messages?page=1&limit=10
+                      last:
+                        type: string
+                        example: /api/v1/support-messages?page=1&limit=10
+                  pagination:
+                    $ref: "#/components/schemas/pagination"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/support-messages/{id}":
+    get:
+      description: Get single support message
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message retrieved successfully
+                  data:
+                    $ref: "#/components/schemas/SupportMessage"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/support-messages/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/support-messages
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete single support message
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message deleted successfully
+                  data:
+                    $ref: "#/components/schemas/SupportMessage"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/support-messages/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/support-messages
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/support-messages/{id}/reply":
+    post:
+      description: Give reply to support message
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    userId:
+                      type: string
+                      example: This is a reply message
+                - $ref: "#/components/schemas/SupportMessageDto"
+      responses:
+        "201":
+          description: support message reply created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message reply created successfully
+                  data:
+                    $ref: "#/components/schemas/SupportMessage"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/support-messages/5e9d5b2b4f9f9b0017b5e7a0/reply
+                      all:
+                        type: string
+                        example: /api/v1/support-messages
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/support-messages/{id}/featured":
+    post:
+      description: update support message featured
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                featured:
+                  type: boolean
+                  example: true
+              required:
+                - featured
+      responses:
+        "200":
+          description: support message featured updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message featured updated successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5f9d5b9b9d5b9f9d5b9d5b9f
+                      featured:
+                        type: boolean
+                        example: true
+                      createdAt:
+                        type: string
+                        example: 2020-10-30T12:12:12.000Z
+                      updatedAt:
+                        type: string
+                        example: 2020-10-30T12:12:12.000Z
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/support-messages/{id}/read":
+    post:
+      description: update support message featured
+      tags:
+        - Support
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: support message featured updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: support message featured updated successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5f9d5b9b9d5b9f9d5b9d5b9f
+                      featured:
+                        type: boolean
+                        example: true
+                      createdAt:
+                        type: string
+                        example: 2020-10-30T12:12:12.000Z
+                      updatedAt:
+                        type: string
+                        example: 2020-10-30T12:12:12.000Z
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /fiscal-years:
+    post:
+      description: Create a new fiscal year
+      tags:
+        - Fiscal Year
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fiscalYear:
+                  type: string
+                  example: 2020-2021
+                startDate:
+                  type: string
+                  example: "2020-04-01"
+                endDate:
+                  type: string
+                  example: "2021-03-31"
+      responses:
+        "201":
+          description: fiscal year created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 201
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: fiscal year created successfully
+                  data:
+                    allOf:
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 5e9d5b2b4f9f9b0017b5e7a0
+                      - $ref: "#/paths/~1fiscal-years/post/requestBody/content/application~1json/schema"
+                      - $ref: "#/components/schemas/Timestamp"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/fiscal-years
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+    get:
+      description: Get all fiscal years
+      tags:
+        - Fiscal Year
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/page"
+      responses:
+        "200":
+          description: fiscal years fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: fiscal years fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/paths/~1fiscal-years/post/responses/201/content/application~1json/schema/properties/data"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/fiscal-years?page=1&limit=10
+                      first:
+                        type: string
+                        example: /api/v1/fiscal-years?page=1&limit=10
+                      prev:
+                        type: string
+                        example: /api/v1/fiscal-years?page=1&limit=10
+                      next:
+                        type: string
+                        example: /api/v1/fiscal-years?page=1&limit=10
+                      last:
+                        type: string
+                        example: /api/v1/fiscal-years?page=1&limit=10
+        "401":
+          $ref: "#/components/responses/401"
+        "500":
+          $ref: "#/components/responses/500"
+  "/fiscal-years/{id}":
+    get:
+      description: Get a fiscal year based on the id
+      tags:
+        - Fiscal Year
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: fiscal year fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: fiscal year fetched successfully
+                  data:
+                    $ref: "#/paths/~1fiscal-years/post/responses/201/content/application~1json/schema/properties/data"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/fiscal-years
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    patch:
+      description: Update specific fiscal year of the currently logged in user by id
+      tags:
+        - Fiscal Year
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/paths/~1fiscal-years/post/requestBody/content/application~1json/schema"
+      responses:
+        "200":
+          description: fiscal year updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: fiscal year updated successfully
+                  data:
+                    $ref: "#/paths/~1fiscal-years/post/responses/201/content/application~1json/schema/properties/data"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/fiscal-years
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+    delete:
+      description: Delete specific fiscal year by id
+      tags:
+        - Fiscal Year
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/idPathParam"
+      responses:
+        "200":
+          description: fiscal year deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: fiscal year deleted successfully
+                  data:
+                    $ref: "#/paths/~1fiscal-years/post/responses/201/content/application~1json/schema/properties/data"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                      all:
+                        type: string
+                        example: /api/v1/fiscal-years
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  /tax:
+    get:
+      description: Get a list of tax taxes
+      operationId: getTaxTaxes
+      tags:
+        - Tax
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: years
+          description: Number of years per page
+          schema:
+            type: integer
+            format: int32
+            example: 10
+      responses:
+        "200":
+          description: Tax taxes retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Tax taxes retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                        - type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 5e9d5b2b4f9f9b0017b5e7a0
+                        - $ref: "#/components/schemas/TaxSlabDto"
+                        - $ref: "#/components/schemas/Timestamp"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+  "/tax/users/{userId}":
+    get:
+      description: Get a list of tax taxes
+      operationId: admintax
+      tags:
+        - Tax
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          description: User ID
+          required: true
+          schema:
+            type: string
+            example: 64d268cdeef8c84bb18912db
+        - $ref: "#/paths/~1tax/get/parameters/0"
+      responses:
+        "200":
+          description: Tax taxes retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                    example: 200
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Tax taxes retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/paths/~1tax/get/responses/200/content/application~1json/schema/properties/data/items"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "500":
+          $ref: "#/components/responses/500"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+            fullName:
+              type: string
+              example: John Doe
+            username:
+              type: string
+              example: johndoe
+            role:
+              type: string
+              enum:
+                - customer
+                - admin
+                - superadmin
+              example: customer
+        - $ref: "#/components/schemas/UserDto"
+        - $ref: "#/components/schemas/Timestamp"
+    UserDto:
+      allOf:
+        - $ref: "#/components/schemas/UpdateUserDto"
+        - type: object
+          properties:
+            password:
+              type: string
+              example: johndoe
+            termsAndConditions:
+              type: boolean
+              example: true
+    UpdateUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: John
+        middleName:
+          type: string
+          example: Doe
+        lastName:
+          type: string
+          example: Doe
+        mobile:
+          type: string
+          example: 1234567890
+        dateOfBirth:
+          type: string
+          example: 1990-01-01T00:00:00.000Z
+        email:
+          type: string
+          format: email
+          example: example@gmail.com
+        address:
+          type: string
+          example: "Ashulia, Savar, Dhaka"
+    Timestamp:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          example: "2020-01-01T00:00:00.000Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2020-01-01T00:00:00.000Z"
+    Expense:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+            claimableAmount:
+              type: number
+              example: 1000
+        - $ref: "#/components/schemas/ExpenseDto"
+        - $ref: "#/components/schemas/Timestamp"
+    ExpenseDto:
+      type: object
+      properties:
+        expenseName:
+          type: string
+          example: Expense Name
+        description:
+          type: string
+          example: Expense Description
+        expenseType:
+          type: string
+          example: 5f9d5b9b9d5b9f9d5b9d5b9f
+        totalAmount:
+          type: number
+          example: 1000
+        status:
+          type: string
+          enum:
+            - pending
+            - approved
+            - rejected
+            - pending for slip
+          example: pending
+        isGSTClaimable:
+          type: boolean
+          example: true
+        expenseDate:
+          type: string
+          format: date
+          example: "2023-09-14"
+    IncomeSource:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+        - $ref: "#/components/schemas/incomeSourceDto"
+        - $ref: "#/components/schemas/Timestamp"
+    incomeSourceDto:
+      type: object
+      properties:
+        incomeSource:
+          type: string
+          example: house rent income
+        amount:
+          type: number
+          example: 10000
+        description:
+          type: string
+          example: house rent income
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T00:00:00.000Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T00:00:00.000Z"
+        incomeDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T00:00:00.000Z"
+        incomeType:
+          type: string
+          example: manual
+    Category:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+        - $ref: "#/components/schemas/CategoryDto"
+        - $ref: "#/components/schemas/Timestamp"
+    CategoryDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: IRD
+        description:
+          type: string
+          example: This is a description
+        claimablePercentage:
+          type: number
+          example: 0.5
+        depreciationRate:
+          type: number
+          example: 0.5
+    pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 5
+        limit:
+          type: integer
+          format: int32
+          example: 10
+        next:
+          type: integer
+          format: int32
+          example: 3
+        prev:
+          type: integer
+          format: int32
+          example: 4
+        totalPage:
+          type: integer
+          format: int32
+          example: 100
+        totalItems:
+          type: integer
+          format: int32
+          example: 1500
+    OCRExpense:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+            status:
+              type: string
+              enum:
+                - pending
+                - approved
+                - warning
+                - rejected
+              default: pending
+        - $ref: "#/components/schemas/OCRExpenseDto"
+        - $ref: "#/components/schemas/Timestamp"
+    OCRExpenseDto:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: "https://www.ird.govt.nz/-/media/project/ir/home/documents/forms-and-guides/ir3/2020/ir3g-2020.pdf"
+    Notification:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+            imageUrl:
+              type: string
+              example: "https://storage.googleapis.com/expense-manager-ocr-bucket/5f9d5b9b9d5b9f9d5b9d5b9f/5f9d5b9b9d5b9f9d5b9d5b9f-1604056060000.jpg"
+        - $ref: "#/components/schemas/NotificationDto"
+        - $ref: "#/components/schemas/Timestamp"
+    NotificationDto:
+      type: object
+      properties:
+        title:
+          type: number
+          example: 1000
+        body:
+          type: string
+          example: 1000
+    NotificationChannel:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+            logo:
+              type: string
+              example: "https://res.cloudinary.com/dxk0bmtei/image/upload/v1587360000/5e9d5b2b4f9f9b0017b5e7a0.png"
+        - $ref: "#/components/schemas/NotificationChannelDto"
+        - $ref: "#/components/schemas/Timestamp"
+    NotificationChannelDto:
+      type: object
+      properties:
+        channelName:
+          type: string
+          example: channel 1
+        description:
+          type: string
+          example: channel 1
+        members:
+          type: array
+          items:
+            type: string
+            example: 5e9d5b2b4f9f9b0017b5e7a0
+    TaxSlab:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+        - $ref: "#/components/schemas/TaxSlabDto"
+        - $ref: "#/components/schemas/Timestamp"
+    TaxSlabDto:
+      type: object
+      properties:
+        min:
+          type: number
+          example: 0
+        max:
+          type: number
+          example: 100000
+        rate:
+          type: number
+          example: 0.1
+    SupportMessage:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5f9d5b9b9d5b9f9d5b9d5b9f
+        - $ref: "#/components/schemas/SupportMessageDto"
+        - $ref: "#/components/schemas/Timestamp"
+    SupportMessageDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@gmail.com
+        subject:
+          type: string
+          example: This is a subject
+        message:
+          type: string
+          example: This is a message
+    setting:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5f8b9a9b1c9d440000f3e9a0
+        - $ref: "#/components/schemas/settingDto"
+        - $ref: "#/components/schemas/Timestamp"
+    settingDto:
+      type: object
+      properties:
+        webLogo:
+          type: string
+          format: binary
+          description: Web logo
+        mobileLogo:
+          type: string
+          format: binary
+          description: App logo
+        fevIcon:
+          type: string
+          format: binary
+          description: Favicon
+        title:
+          type: string
+          description: Web title
+          example: Web title
+        appTitle:
+          type: string
+          description: App title
+          example: App title
+        appDescription:
+          type: string
+          description: App description
+          example: App description
+        fiscalStartMont:
+          type: integer
+          format: int32
+          description: Fiscal start month
+          example: 1
+        fiscalEndMonth:
+          type: integer
+          format: int32
+          description: Fiscal end month
+          example: 12
+    asset:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              example: 5e9d5b2b4f9f9b0017b5e7a0
+        - $ref: "#/components/schemas/assetDto"
+        - $ref: "#/components/schemas/Timestamp"
+    assetDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: IRD
+        description:
+          type: string
+          example: This is a description
+        category:
+          type: string
+          example: 5e9d5b2b4f9f9b0017b5e7a0
+        purchaseDate:
+          type: string
+          format: date-time
+          example: "2020-04-20T00:00:00.000Z"
+        purchasePrice:
+          type: number
+          example: 100
+        status:
+          type: string
+          enum:
+            - pending
+            - approved
+            - rejected
+            - pending for slip
+          example: approved
+        isSold:
+          type: boolean
+          example: false
+        saleDate:
+          type: string
+          format: date-time
+          example: "2020-04-20T00:00:00.000Z"
+        salePrice:
+          type: number
+          example: 100
+  parameters:
+    page:
+      in: query
+      name: page
+      description: Current page number
+      schema:
+        type: integer
+        format: int32
+        example: 1
+    limit:
+      in: query
+      name: limit
+      description: Number of items per page
+      schema:
+        type: integer
+        format: int32
+        example: 10
+    order:
+      in: query
+      name: order
+      description: Order by
+      required: false
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+        example: asc
+    sort:
+      in: query
+      name: sort
+      description: Sort by
+      required: false
+      schema:
+        type: string
+        example: name
+    search:
+      in: query
+      name: search
+      description: Search by
+      required: false
+      schema:
+        type: string
+        example: John
+    endDate:
+      in: query
+      name: end
+      description: End date
+      required: false
+      schema:
+        type: string
+        format: date
+        example: "2020-01-01"
+    startDate:
+      in: query
+      name: start
+      description: Start from
+      required: false
+      schema:
+        type: string
+        format: date
+        example: "2020-01-01"
+    fields:
+      in: query
+      name: fields
+      description: Fields to be returned
+      schema:
+        type: string
+        example: "id,amount,description"
+    expand:
+      in: query
+      name: expand
+      description: Expand the response with the specified fields
+      required: false
+      schema:
+        type: string
+        example: "user,category"
+    numOfDays:
+      in: query
+      name: numOfDays
+      description: Number of days
+      schema:
+        type: integer
+        example: 7
+    numOfMonths:
+      in: query
+      name: numOfMonths
+      description: number of months
+      required: false
+      schema:
+        type: integer
+        example: 11
+    type:
+      in: query
+      name: type
+      description: type of message
+      required: false
+      schema:
+        type: string
+        example: receive
+    dynamic:
+      in: query
+      name: params
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+      style: form
+      explode: true
+    fiscal:
+      in: query
+      name: fiscal
+      description: Fiscal year id
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+    userId:
+      in: query
+      name: userId
+      description: ID of the user
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+    idPathParam:
+      in: path
+      name: id
+      description: ID
+      required: true
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+    tokenPathParam:
+      in: path
+      name: token
+      description: Recovery password token
+      required: true
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+    userIdPathParam:
+      in: path
+      name: userId
+      description: User ID
+      required: true
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+  responses:
+    "400":
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 400
+              message:
+                type: string
+                example: Bad Request
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: should be string
+                    field:
+                      type: string
+                      example: name
+                    value:
+                      type: string
+                      example: "123"
+    "401":
+      description: You are not authorized to access this resource. Please login first.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 401
+              status:
+                type: string
+                example: Unauthorized
+              message:
+                type: string
+                example: You are not authorized to access this resource. Please login first.
+    "403":
+      description: you have no access to this resource
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 403
+              status:
+                type: string
+                example: Forbidden
+              message:
+                type: string
+                example: you have no access to this resource
+    "404":
+      description: Your requested resource was not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 404
+              status:
+                type: string
+                example: Not Found
+              message:
+                type: string
+                example: Your requested resource was not found
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 500
+              status:
+                type: string
+                example: Internal Server Error
+              message:
+                type: string
+                example: Internal Server Error

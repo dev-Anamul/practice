@@ -1,0 +1,48 @@
+get:
+  description: Get all expenses for the currently logged in user
+  summary: Get all expenses
+  operationId: getAssets
+  tags:
+    - Assets
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/expand.yaml
+    - $ref: ../../components/parameters/query/userId.yaml
+  responses:
+    "200":
+      description: expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expenses fetched successfully
+              data:
+                type: object
+                properties:
+                  expenses:
+                    type: array
+                    items:
+                      $ref: ../../components/schemas/Expense.yaml
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

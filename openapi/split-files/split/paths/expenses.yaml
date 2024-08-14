@@ -1,0 +1,120 @@
+get:
+  description: Get all expenses of the currently logged in user
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../components/parameters/page.yaml
+    - $ref: ../components/parameters/limit.yaml
+    - $ref: ../components/parameters/sort.yaml
+    - $ref: ../components/parameters/order.yaml
+    - $ref: ../components/parameters/search.yaml
+    - $ref: ../components/parameters/fields.yaml
+    - $ref: ../components/parameters/expand.yaml
+    - $ref: ../components/parameters/dynamic.yaml
+  responses:
+    '200':
+      description: expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expenses fetched successfully
+              data:
+                type: object
+                properties:
+                  expenses:
+                    type: array
+                    items:
+                      $ref: ../components/schemas/Expense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/expense
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+                  firstPage:
+                    type: string
+                    example: /api/v1/expense?page=1&limit=10
+                  lastPage:
+                    type: string
+                    example: /api/v1/expense?page=10&limit=10
+                  nextPage:
+                    type: string
+                    example: /api/v1/expense?page=2&limit=10
+                  prevPage:
+                    type: string
+                    example: /api/v1/expense?page=1&limit=10
+              pagination:
+                $ref: ../components/schemas/pagination.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+post:
+  description: Create a new expense for the currently logged in user
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../components/schemas/ExpenseDto.yaml
+            - type: object
+              properties:
+                filePath:
+                  type: string
+                  format: binary
+                  description: The file to upload.
+  responses:
+    '201':
+      description: expense created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expense created successfully
+              data:
+                $ref: ../components/schemas/Expense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/expense
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '500':
+      $ref: ../components/responses/500.yaml

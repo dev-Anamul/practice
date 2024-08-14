@@ -1,0 +1,47 @@
+post:
+  description: Notify users belongs to a channel
+  summary: Notify users belongs to a channel
+  operationId: notifyChannelUsers
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/NotificationDto.yaml
+            - type: object
+              properties:
+                imageUrl:
+                  type: string
+                  format: binary
+  responses:
+    "200":
+      description: sent notification successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification sent successfully
+              data:
+                $ref: ../../components/schemas/Notification.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

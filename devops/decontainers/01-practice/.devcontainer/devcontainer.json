@@ -1,0 +1,12 @@
+{
+  "name": "C# (.NET) and MS SQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["ms-dotnettools.csharp", "ms-mssql.mssql"]
+    }
+  }
+}

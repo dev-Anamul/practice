@@ -1,0 +1,7 @@
+name: token
+in: path
+description: Recovery password token
+required: true
+schema:
+  type: string
+  example: 64d268cdeef8c84bb18912db

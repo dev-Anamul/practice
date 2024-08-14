@@ -1,0 +1,45 @@
+get:
+  description: Get a list of tax taxes for a user
+  summary: Get list of taxes for a user
+  operationId: getUserTaxes
+  tags:
+    - Tax
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: path
+      name: userId
+      description: User ID
+      required: true
+      schema:
+        type: string
+        example: 64d268cdeef8c84bb18912db
+    - $ref: ../../components/parameters/query/years.yaml
+  responses:
+    "200":
+      description: Tax taxes retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Tax taxes retrieved successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/TaxSlab.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

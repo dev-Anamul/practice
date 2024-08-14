@@ -1,0 +1,7 @@
+in: query
+name: expand
+description: Expand the response with the specified fields
+required: false
+schema:
+  type: string
+  example: user,category

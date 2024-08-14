@@ -1,0 +1,11 @@
+type: object
+properties:
+  min:
+    type: number
+    example: 0
+  max:
+    type: number
+    example: 100000
+  rate:
+    type: number
+    example: 0.1

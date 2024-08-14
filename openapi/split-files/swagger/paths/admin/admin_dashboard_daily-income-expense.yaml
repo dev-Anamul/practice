@@ -1,0 +1,49 @@
+get:
+  description: Get daily expenses for admin dashboard
+  summary: Get daily expenses for admin dashboard
+  operationId: getDailyExpenseForAdmin
+  tags:
+    - Dashboard
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/numOfDays.yaml
+  responses:
+    "200":
+      description: dashboard data fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: dashboard data fetched successfully
+              data:
+                type: object
+                properties:
+                  dailyExpense:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          example: "2020-04-20T00:00:00.000Z"
+                        totalExpense:
+                          type: integer
+                          format: int32
+                          example: 1000
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

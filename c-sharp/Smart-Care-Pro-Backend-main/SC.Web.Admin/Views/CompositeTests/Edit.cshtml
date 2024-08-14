@@ -1,0 +1,262 @@
+﻿@model Domain.Entities.CompositeTest
+
+@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+    <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+        <div class="card">
+            <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+                @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+                {
+                    <div class="row g-3 me-0 ms-0 mt-1">
+                        <div class="alert alert-success" role="alert">
+                            @TempData[Utilities.Constants.SessionConstants.Message]
+                        </div>
+                    </div>
+                }
+
+                <!--HEADER-->
+                <div class="pagetitle">
+                    <h4 class="card-title fs-2 fw-bold mb-0">Composite Test</h4>
+                    <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+                    <hr class="mt-0">
+                </div>
+
+                <!--FORM START-->
+                <form class="row g-1" method="post" asp-action="Edit" id="compositeForm" asp-controller="CompositeTests">
+
+                    <!--Hidden Field for CompositeTestId-->
+                    <input type="hidden" asp-for="Oid" />
+
+                    <!--Description-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90" data-val-length-min="2" data-val-length="Description should be at least 2 digits.">
+                            <label class="required" asp-for="Description">Group Title</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Test-->
+                    <div class="card border shadow-none mt-3">
+                        <h5 class="card-header card-title ps-3">Test Items (Please add the child test items for this composite test)</h5>
+                        <div class="card-body p-3">
+                            <div class="row g-3 mt-1 position-relative mb-2">
+                                <div class="col-md-5 col-sm-5">
+                                    <!-- Search Box for Tests -->
+                                    <div class="form-center ms-lg-5 mb-2">
+                                        <input type="search" id="CompositTest" class="form-control" placeholder="Search" />
+                                    </div>
+                                    <!-- Available Tests -->
+                                    <div class="form-center ms-lg-5">
+                                        <select id="ReadTestData" class="form-select" size="9" asp-items="@ViewBag.TestData" multiple aria-label="multiple select example">
+                                            @foreach (var test in ViewBag.TestData)
+                                            {
+                                                <option value="@test.Value">@test.Text</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!--ADD/REMOVE-->
+                                <div class="col-md-2 col-sm-2 d-flex justify-content-center mt-3 mt-lg-3 mt-md-5 mt-sm-5 pt-lg-5">
+                                    <div class="form-floating customshr ms-md-1 text-center">
+                                        <button class="btn btn-sm btn-primary my-2 Btn" type="button" id="btnAddTest"><i class="bi bi-arrow-right"></i></button>
+                                        <button class="btn btn-sm btn-secondary Btn" type="button" id="btnRemoveTest"><i class="bi bi-arrow-left"></i></button>
+                                    </div>
+                                </div>
+
+                                <!-- Selected Tests -->
+                                <div class="col-md-5 col-sm-5 mt-3">
+                                    <div class="form-center me-lg-5">
+                                        <select id="TestList" asp-for="TestList" size="11" class="form-select" multiple aria-label="multiple select example" data-val="true" data-val-required="Required.">
+                                            @foreach (var item in Model.TestItems)
+                                            {
+                                                <option value="@item.Test.Oid" selected>@item.Test.Title</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--ACTIONS-->
+                    <div class="col-12 mt-0 text-center">
+                        <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit">
+                            <i class="bi bi-check2-circle"></i> Submit
+                        </button>
+                        <a href="/CompositeTests/Index?module=Investigation" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+                    {
+    <script src="~/js/cdns/select2.min.js"></script>
+    <script>
+
+        $("#CompositTest").on("keyup", function () {
+            var value = $(this).val();
+            //debugger
+            $("#ReadTestData option").each(function (index) {
+                $row = $(this);
+                var id = $row.text();
+                if (!id.toLowerCase().includes(value.toLowerCase())) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        })
+
+        $('#btnAddTest').click(function () {
+
+            if ($('#ReadTestData :selected').length != 0) {
+            }
+            else {
+                $(function () {
+                    $("#message").text();
+                });
+
+                $('#text').text("Required");
+
+                return;
+            }
+
+            var data = [];
+            $("#ReadTestData option:selected").each(function () {
+                var $this = $(this);
+                if ($this.length) {
+                    var selectedText = $this.text();
+                    var selectedValue = $this.val();
+                    if (selectedValue != '') {
+                        var option = { text: selectedText, Value: selectedValue };
+                        data.push(option);
+                    }
+                }
+            });
+
+            $.each(data, function (key, value) {
+                var append = true;
+
+                $("#TestList option").each(function () {
+                    var $this = $(this);
+                    if ($this.length) {
+                        var SelectedSubCategoryValue = $this.val();
+                        if (SelectedSubCategoryValue == value.Value) {
+                            append = false;
+                            $(function () {
+                                $("#message").text();
+                            });
+                            $('#text').text(this.text + " : The item was selected before.");
+                            return;
+                        }
+                    }
+                });
+
+                if (append != false) {
+                    $('#TestList')
+                        .append($("<option selected></option>")
+                            .attr("value", value.Value)
+                            .text(value.text));
+
+                    $("#ReadTestData option:selected").each(function () {
+                        var $this = $(this);
+                        var selectedText = $this.text();
+                        var selectedValue = $this.val();
+                        $("#ReadTestData option[value='" + selectedValue + "']").remove();
+                    });
+                }
+            });
+
+            $("#TestList option:selected").prop("selected", true);
+        })
+
+        // Remove properties to Listbox
+        $('#btnRemoveTest').click(function () {
+
+            // Remove properties from Listbox
+            if ($('#TestList :selected').length != 0) {
+
+            }
+            else {
+
+                $(function () {
+                    $("#message").dialog();
+                });
+
+                $('#text').text("Please select one or more items from your right-box..");
+
+                return;
+            }
+
+            var data = [];
+            $("#TestList option:selected").each(function () {
+                var $this = $(this);
+                if ($this.length) {
+                    var selectedText = $this.text();
+                    var selectedValue = $this.val();
+                    if (selectedValue != '') {
+                        var option = { text: selectedText, Value: selectedValue };
+                        data.push(option);
+                    }
+                }
+            });
+
+            $.each(data, function (key, value) {
+                var append = true;
+                $("#ReadTestData  option").each(function () {
+                    var $this = $(this);
+                    if ($this.length) {
+                        var SelectedSubCategoryValue = $this.val();
+                        if (SelectedSubCategoryValue == value.Value) {
+                            $("#TestList option[value='" + SelectedSubCategoryValue + "']").remove();
+                            append = false;
+                            return;
+                        }
+                    }
+                });
+
+                if (append != false) {
+                    $('#ReadTestData')
+                        .append($("<option selected></option>")
+                            .attr("value", value.Value)
+                            .text(value.text));
+
+                    $("#TestList  option:selected").each(function () {
+                        var $this = $(this);
+                        if ($this.length) {
+                            var selectedText = $this.text();
+                            var selectedValue = $this.val();
+                            $("#TestList option[value='" + selectedValue + "']").remove();
+
+                        }
+                    });
+                }
+            });
+
+            $("#ReadTestData option:selected").prop("selected", false);
+        })
+
+        $('#btnSave').click(function (event) {
+            event.preventDefault();
+
+            $('#TestList option').prop('selected', true);
+
+            $('#compositeForm').submit();
+        });
+
+    </script>
+}

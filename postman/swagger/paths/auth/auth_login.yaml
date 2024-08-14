@@ -1,0 +1,64 @@
+post:
+  description: this endpoint for user login
+  summary: user login
+  operationId: login
+  security: []
+  tags:
+    - Auth
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              example: example@gmail.com
+            password:
+              type: string
+              example: 123456
+            notificationToken:
+              type: string
+              example: 123456
+          required:
+            - email
+            - password
+  responses:
+    "200":
+      description: user logged in successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: user logged in successfully
+              data:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/auth/login
+                  signup:
+                    type: string
+                    example: /api/v1/auth/signup
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

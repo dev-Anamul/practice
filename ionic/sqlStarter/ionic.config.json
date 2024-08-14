@@ -1,0 +1,7 @@
+{
+  "name": "sqlStarter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,59 @@
+post:
+  description: this endpoint for user registration
+  summary: user registration
+  operationId: signup
+  security: []
+  tags:
+    - Auth
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - type: object
+            - $ref: ../../components/schemas/UserDto.yaml
+          required:
+            - email
+            - password
+            - firstName
+            - lastName
+            - mobile
+            - dateOfBirth
+            - termsAndConditions
+  responses:
+    "200":
+      description: user registered successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: user registered successfully
+              data:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/auth/signup
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

@@ -1,0 +1,51 @@
+get:
+  description: Get a list of tax taxes
+  summary: Get list of taxes
+  operationId: getListOfTaxes
+  tags:
+    - Tax
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: query
+      name: years
+      description: Number of years per page
+      schema:
+        type: integer
+        format: int32
+        example: 10
+  responses:
+    "200":
+      description: Tax taxes retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Tax taxes retrieved successfully
+              data:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 5e9d5b2b4f9f9b0017b5e7a0
+                    - $ref: ../../components/schemas/TaxSlabDto.yaml
+                    - $ref: ../../components/schemas/Timestamp.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

@@ -1,0 +1,8 @@
+
+Card 1 is the 7 of clubs
+Card 2 is the jack of hearts
+Card 3 is the  ace of spades
+I am swapping card 1 and card 3
+I am swapping card 2 and card 3
+I am swapping card 1 and card 2
+Now where (1, 2, or 3) is the  ace of spades ? That's right! You win!You chose the  ace of spades

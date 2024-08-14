@@ -1,0 +1,13 @@
+<form>
+  <p *ngIf="isEmptyTodo">Please select a todo</p>
+  <label for="newTodo">Add a new todo</label>
+  <br />
+  <input
+    type="text"
+    placeholder="Add a new todo"
+    (keydown)="resetEmptyTodo()"
+    [(ngModel)]="newTodo"
+    name="newTodo"
+  />
+  <button (click)="crateTodo()">Add</button>
+</form>

@@ -1,0 +1,5 @@
+Enter dividend: Enter divisor: Quotient is: 3
+Remainder is: 2
+Do another? (y/n): Enter dividend: Enter divisor: Quotient is: 13
+Remainder is: 1
+Do another? (y/n): 

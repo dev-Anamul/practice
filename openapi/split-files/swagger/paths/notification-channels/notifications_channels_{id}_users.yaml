@@ -1,0 +1,96 @@
+get:
+  description: Get all the members belongs to a channel
+  summary: Get all the members belongs to a channel
+  operationId: getChannelUsers
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: Users belongs to this channel fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel fetched successfully
+              data:
+                $ref: ../../components/schemas/User.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: >-
+                      /api/v1/notification-channels/5e9d5b2b4f9f9b0017b5e7a0/users/5e9d5b2b4f9f9b0017b5e7a0
+                  all_users:
+                    type: string
+                    example: /api/v1/admin/users
+                  all_channels:
+                    type: string
+                    example: /api/v1/notification/channels
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+post:
+  description: Add members to a channel
+  summary: Add members to a channel
+  operationId: addUsersToChannel
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            userIds:
+              type: array
+              items:
+                type: string
+              example:
+                - 5e9d5b2b4f9f9b0017b5e7a0
+                - 5e9d5b2b4f9f9b0017b5e7a0
+  responses:
+    "200":
+      description: Users successfully added to channel
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Users successfully added to channel
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

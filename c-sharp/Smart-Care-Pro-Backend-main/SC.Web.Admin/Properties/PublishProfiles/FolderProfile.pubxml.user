@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Publish\IHM-SmartCare\Admin</_PublishTargetUrl>
+    <History>True|2024-03-07T04:19:05.7250521Z;True|2024-03-06T05:05:33.6071748+06:00;True|2024-03-04T18:53:13.8997291+06:00;True|2024-02-08T17:26:25.3215267+06:00;True|2024-02-08T16:13:19.8342302+06:00;True|2024-02-08T16:08:49.8094435+06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

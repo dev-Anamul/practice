@@ -1,0 +1,7 @@
+in: query
+name: years
+description: Number of years per page
+schema:
+  type: integer
+  format: int32
+  example: 10

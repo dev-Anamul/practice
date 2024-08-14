@@ -1,0 +1,11 @@
+type: object
+properties:
+  email:
+    type: string
+    example: example@gmail.com
+  subject:
+    type: string
+    example: This is a subject
+  message:
+    type: string
+    example: This is a message

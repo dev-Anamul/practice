@@ -1,0 +1,80 @@
+get:
+  description: Get all expenses by category ID
+  summary: Get all expenses by category ID
+  operationId: getExpensesByCategory
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/expand.yaml
+  responses:
+    "200":
+      description: Expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Expenses fetched successfully
+              data:
+                type: object
+                properties:
+                  expenses:
+                    type: array
+                    items:
+                      $ref: ../../components/schemas/Expense.yaml
+                  total:
+                    type: integer
+                    format: int32
+                    example: 1
+                  page:
+                    type: integer
+                    format: int32
+                    example: 1
+                  limit:
+                    type: integer
+                    format: int32
+                    example: 10
+                  pages:
+                    type: integer
+                    format: int32
+                    example: 1
+                example:
+                  expenses:
+                    - id: 1
+                      title: Expense 1
+                      description: Expense 1 description
+                  total: 1
+                  page: 1
+                  limit: 10
+                  pages: 1
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0/expenses
+                  all:
+                    type: string
+                    example: /api/v1/categories/5e9d5b2b4f9f9b0017b5e7a0/expenses
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

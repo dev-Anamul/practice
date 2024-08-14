@@ -1,0 +1,8 @@
+in: query
+name: start
+description: Start from
+required: false
+schema:
+  type: string
+  format: date
+  example: '2020-01-01'

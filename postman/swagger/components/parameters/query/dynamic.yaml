@@ -1,0 +1,8 @@
+in: query
+name: params
+schema:
+  type: object
+  additionalProperties:
+    type: string
+style: form
+explode: true

@@ -1,0 +1,137 @@
+get:
+  description: Get a fiscal year based on the id
+  summary: Get fiscal year by id
+  operationId: getFiscalYearById
+  tags:
+    - Fiscal Year
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: fiscal year fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: fiscal year fetched successfully
+              data:
+                $ref: "../../components/schemas/FiscalYear.yaml"
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/fiscal-years
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: Update specific fiscal year of the currently logged in user by id
+  summary: Update fiscal year by id
+  operationId: updateFiscalYearById
+  tags:
+    - Fiscal Year
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/FiscalYearDto.yaml"
+  responses:
+    "200":
+      description: fiscal year updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: fiscal year updated successfully
+              data:
+                $ref: "../../components/schemas/FiscalYear.yaml"
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/fiscal-years/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/fiscal-years
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific fiscal year by id
+  summary: Delete fiscal year by id
+  operationId: deleteFiscalYearById
+  tags:
+    - Fiscal Year
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: fiscal year deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: fiscal year deleted successfully
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "403":
+      $ref: ../../components/responses/403.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

@@ -1,0 +1,24 @@
+{
+  "name": "dotnet practice",
+
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0",
+
+  "features": {},
+
+  "forwardPorts": [],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csharp-keyword-completion",
+        "ms-dotnettools.csharp-snippets",
+        "ms-dotnettools.csharp-namespace-completion",
+        "ms-dotnettools.csharp-type-lookup",
+        "prettier.prettier-vscode"
+      ]
+    }
+  },
+
+  "remoteUser": "root"
+}

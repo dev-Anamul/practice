@@ -1,0 +1,21 @@
+{
+  "name": "split-files",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js",
+    "bundle": "redocly bundle swagger/openapi.yaml --output build/swagger.yaml",
+    "split": "redocly split swagger.yaml --outDir=split",
+    "preview": "redocly preview-docs swagger.yaml",
+    "build": "redocly build-docs swagger.yaml --output swagger.html",
+    "lint": "redocly lint ./swagger/openapi.yaml"
+  },
+  "dependencies": {
+    "@redocly/cli": "^1.8.2",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3",
+    "swagger-ui-express": "^5.0.0",
+    "yamljs": "^0.3.0"
+  }
+}

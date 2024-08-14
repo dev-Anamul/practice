@@ -1,0 +1,26 @@
+type: object
+properties:
+  incomeSource:
+    type: string
+    example: house rent income
+  amount:
+    type: number
+    example: 10000
+  description:
+    type: string
+    example: house rent income
+  startDate:
+    type: string
+    format: date-time
+    example: '2020-01-01T00:00:00.000Z'
+  endDate:
+    type: string
+    format: date-time
+    example: '2020-01-01T00:00:00.000Z'
+  incomeDate:
+    type: string
+    format: date-time
+    example: '2020-01-01T00:00:00.000Z'
+  incomeType:
+    type: string
+    example: manual

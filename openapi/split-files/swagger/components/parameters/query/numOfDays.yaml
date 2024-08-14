@@ -1,0 +1,6 @@
+in: query
+name: numOfDays
+description: Number of days
+schema:
+  type: integer
+  example: 7

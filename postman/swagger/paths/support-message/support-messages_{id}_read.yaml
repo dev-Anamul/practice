@@ -1,0 +1,47 @@
+post:
+  description: message read
+  summary: message read
+  operationId: readSupportMessage
+  tags:
+    - Support
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: support message featured updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: support message featured updated successfully
+              data:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 5f9d5b9b9d5b9f9d5b9d5b9f
+                  featured:
+                    type: boolean
+                    example: true
+                  createdAt:
+                    type: string
+                    example: "2020-10-30T12:12:12.000Z"
+                  updatedAt:
+                    type: string
+                    example: "2020-10-30T12:12:12.000Z"
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

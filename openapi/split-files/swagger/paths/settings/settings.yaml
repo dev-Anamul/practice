@@ -1,0 +1,72 @@
+post:
+  description: Create or update a setting
+  summary: Create or update a setting
+  operationId: createOrUpdateSetting
+  tags:
+    - Setting
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: ../../components/schemas/settingDto.yaml
+  responses:
+    "201":
+      description: Setting created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Setting created successfully
+              data:
+                $ref: ../../components/schemas/setting.yaml
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: Get all settings
+  summary: Get all settings
+  operationId: getAllSettings
+  tags:
+    - Setting
+  security: []
+  responses:
+    "200":
+      description: Settings retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: Settings retrieved successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/setting.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

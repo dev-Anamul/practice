@@ -1,0 +1,63 @@
+get:
+  description: get all depreciation based on assets id
+  summary: get all depreciation based on assets id
+  operationId: getDepreciationByAssetId
+  tags:
+    - Assets
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: depreciation fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: depreciation fetched successfully
+              data:
+                type: object
+                properties:
+                  depreciation:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        assetId:
+                          type: string
+                          example: 5e9d5b2b4f9f9b0017b5e7a0
+                        fiscalYear:
+                          type: string
+                          example: 2020-2021
+                        depreciation:
+                          type: number
+                          example: 1000
+                        accumulatedDepreciation:
+                          type: number
+                          example: 1000
+                        depreciationRate:
+                          type: number
+                          example: 1000
+                        openingValue:
+                          type: number
+                          example: 1000
+                        endingValue:
+                          type: number
+                          example: 1000
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

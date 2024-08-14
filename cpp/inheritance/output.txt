@@ -1,0 +1,4 @@
+33
+22
+11
+Stack is empty

@@ -1,0 +1,16 @@
+description: Not Acceptable
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 406
+        status:
+          type: string
+          example: Not Acceptable
+        message:
+          type: string
+          example: The request is not acceptable

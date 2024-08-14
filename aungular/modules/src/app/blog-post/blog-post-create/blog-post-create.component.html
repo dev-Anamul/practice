@@ -1,0 +1,38 @@
+<app-layout>
+  <div class="h-screen">
+    <dialog class="modal modal-open">
+      <div class="modal-box bg-slate-50 modal_width space-y-6">
+        <div class="modal-header flex justify-between">
+          <h2 class="text-xl font-bold">Create Post</h2>
+          <button class="btn btn-sm btn-circle btn-ghost" (click)="handleCancelButtonClick()">✕</button>
+        </div>
+        <form class="space-y-4">
+          <label class="form-control w-full space-y-1.5">
+            <span class="label-text">Title</span>
+            <input
+              type="text"
+              placeholder="Type title"
+              class="input input-bordered w-full bg-slate-50"
+            />
+          </label>
+          <label class="form-control w-full space-y-1.5">
+            <span class="label-text">Image Url</span>
+            <input
+              type="text"
+              placeholder="Type image url"
+              class="input input-bordered w-full bg-slate-50"
+            />
+          </label>
+          <label class="form-control w-full space-y-1.5">
+            <span class="label-text">Description</span>
+            <textarea class="textarea textarea-bordered w-full bg-slate-50">
+            </textarea>
+          </label>
+          <div class="py-5">
+            <button class="btn btn-warning w-full">Create</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+  </div>
+</app-layout>

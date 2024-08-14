@@ -1,0 +1,90 @@
+get:
+  description: Get specific income type based on id
+  summary: Get specific income type based on id
+  operationId: getIncomeType
+  tags:
+    - Income-type
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/expand.yaml
+  responses:
+    "200":
+      description: income type fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income type fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/Income-types.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/income-types/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/income-types
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+post:
+  description: create new income type
+  summary: create new income type
+  operationId: createIncomeType
+  tags:
+    - Income-type
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              example: IRD
+            description:
+              type: string
+              example: This is a description
+  responses:
+    "201":
+      description: income type created successfully
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  id:
+                    type: string
+                    example: 5e9d5b2b4f9f9b0017b5e7a0
+              - $ref: ../../components/schemas/Income-types.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

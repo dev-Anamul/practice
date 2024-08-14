@@ -1,0 +1,78 @@
+get:
+  description: get all notifications
+  summary: get all notifications
+  operationId: getNotifications
+  tags:
+    - Notification
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+  responses:
+    "200":
+      description: notifications fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notifications fetched successfully
+              data:
+                type: object
+                properties:
+                  notifications:
+                    type: array
+                    items:
+                      $ref: ../../components/schemas/Notification.yaml
+                  total:
+                    type: integer
+                    format: int32
+                    example: 1
+                  limit:
+                    type: integer
+                    format: int32
+                    example: 10
+                  page:
+                    type: integer
+                    format: int32
+                    example: 1
+                  pages:
+                    type: integer
+                    format: int32
+                    example: 1
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notifications?page=1&limit=10
+                  first:
+                    type: string
+                    example: /api/v1/notifications?page=1&limit=10
+                  prev:
+                    type: string
+                    example: /api/v1/notifications?page=1&limit=10
+                  next:
+                    type: string
+                    example: /api/v1/notifications?page=1&limit=10
+                  last:
+                    type: string
+                    example: /api/v1/notifications?page=1&limit=10
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

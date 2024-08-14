@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ./UpdateUserDto.yaml
+  - type: object
+    properties:
+      password:
+        type: string
+        example: johndoe
+      termsAndConditions:
+        type: boolean
+        example: true

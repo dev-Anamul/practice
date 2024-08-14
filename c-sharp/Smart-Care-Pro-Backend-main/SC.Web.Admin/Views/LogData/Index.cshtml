@@ -1,0 +1,183 @@
+﻿@model X.PagedList.IPagedList<Domain.Entities.CareProLog>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var sl = Convert.ToInt32(ViewBag.SlNo);
+    var fromDate = ViewData["FromDate"] is DateTime fromDateValue ? fromDateValue : (DateTime?)null;
+    var toDate = ViewData["ToDate"] is DateTime toDateValue ? toDateValue : (DateTime?)null;
+    var noMatchFound = !string.IsNullOrEmpty(fromDate.ToString()) && !string.IsNullOrEmpty(toDate.ToString()) && Model.Count == 0;
+}
+
+<head>
+    <style>
+        .table-container {
+            max-height: 400px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+
+        .fixed-header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+    <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+        <!--SEARCH-->
+        <div class="pagetitle row">
+            <div class="float-start col-md-6">
+                <h1 class="card-title fs-2 ">Log Data</h1>
+            </div>
+
+            <div class="float-end col-md-6 pt-1">
+                @using (Html.BeginForm())
+                {
+                    <div class="input-group">
+                        <!-- From Date -->
+                        <input id="fromDate" name="fromDate" type="text" class="form-control logDatePicker" onfocus="(this.value='dd/mm/yyyy')" onblur="(this.value='')" placeholder="From Date">
+
+                        <!-- To Date -->
+                        <input id="toDate" name="toDate" type="text" class="form-control ms-2 logDatePicker" onfocus="(this.value='dd/mm/yyyy')" onblur="(this.value='')" placeholder="To Date">
+                       
+                        <div class="input-group-append ms-2">
+                            <button type="submit" class="btn btn-primary rounded-1 search-p">
+                                <i class="bi bi-search"></i>
+                            </button>
+
+                            <a href="@Url.Action("ExportToCsv",new { fromDate = fromDate, toDate = toDate })" class="btn btn-info rounded-1 search-p">Export to CSV</a>
+                        </div>
+                        <span id="EarlierDateValidation" style="display:none;" class="text-danger">You cannot select a date earlier than "From Date" & Date range exceeds of 30 days</span>
+
+                    </div>
+                }
+
+            </div>
+
+            <hr class="customhr mt-0 ms-0 ms-sm-2 mt-2 mt-sm-0">
+        </div>
+
+        <!--ALERT MESSAGE-->
+        @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+        {
+            <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+                <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!--CARD START-->
+                <div class="card">
+                    <div class="card-body font-md mt-3">
+                        @*<h5 class="card-title">Allergic Drug List</h5>*@
+
+                        <div class="table-responsive table-container">
+
+                            <!-- TABLE -->
+                            <table class="table">
+                                <thead class="fixed-header">
+                                    <tr>
+                                        <th scope="col">SL</th>
+                                        <th scope="col">Log Date</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Class Name</th>
+                                        <th scope="col">Method Name</th>
+                                        <th scope="col">Error Message</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                @if (noMatchFound)
+                                {
+                                    <tr style="color:red; text-align: center;">
+                                        <th colspan="5"><span class="fw-bold fs-5">No match Found!</span></th>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    @foreach (var drug in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@sl</th>
+                                            <td>@drug.LogDate</td>
+                                            <td>@drug.Location</td>
+                                            <td>@drug.ClassName</td>
+                                            <td>@drug.MethodName</td>
+                                            <td title="@drug.ErrorMessage">@Html.DisplayFor(modelItem => drug.ErrorMessage)</td>
+                                        </tr>
+                                        sl++;
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--PAGINATION-->
+                        @Html.Partial("~/Views/Shared/_Pagination.cshtml")
+
+                    </div>
+                </div>
+                <!--CARD END-->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#fromDate').datepicker({
+                dateFormat: 'dd/mm/yy',
+                yearRange: "-100:+100",
+                changeMonth: true,
+                changeYear: true,
+                onSelect: function (dateText) {
+                    validateDateRange();
+                }
+            }).datepicker('option', 'dateFormat', 'dd/mm/yy').attr('readonly', 'readonly');
+
+            // Initialize DateResolved datepicker
+            $('#toDate').datepicker({
+                dateFormat: 'dd/mm/yy',
+                minDate: '-100Y',
+                maxDate: '+100Y',
+                yearRange: '-100:+100Y',
+                changeMonth: true,
+                changeYear: true,
+                onSelect: function (dateText, ui) {
+                    validateDateRange();
+                }
+            }).datepicker('option', 'dateFormat', 'dd/mm/yy').attr('readonly', 'readonly');
+
+            function validateDateRange() {
+                let toDate = $('#toDate').datepicker('getDate');
+                let fromDate = $('#fromDate').datepicker('getDate');
+
+                if (toDate !== null && fromDate !== null) {
+                    // Calculate the difference in days
+                    let timeDiff = toDate.getTime() - fromDate.getTime();
+                    let dayDiff = timeDiff / (1000 * 3600 * 24);
+
+                    if (dayDiff > 30) {
+                        $('#EarlierDateValidation').show();
+                        $('#toDate').val('');
+                    } else {
+                        $('#EarlierDateValidation').hide();
+                    }
+                }
+            }
+        });
+    </script>
+}
+
+
+

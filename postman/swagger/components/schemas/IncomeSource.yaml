@@ -1,0 +1,8 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        example: 5e9d5b2b4f9f9b0017b5e7a0
+  - $ref: ./incomeSourceDto.yaml
+  - $ref: ./Timestamp.yaml

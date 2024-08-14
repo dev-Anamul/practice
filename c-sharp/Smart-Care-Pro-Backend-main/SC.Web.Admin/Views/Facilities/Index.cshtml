@@ -1,0 +1,173 @@
+﻿@model X.PagedList.IPagedList<Domain.Entities.Facility>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{ 
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var sl = Convert.ToInt32(ViewBag.SlNo);
+   var search = ViewData["Search"] as string;
+   var noMatchFound = !string.IsNullOrEmpty(search) && Model.Count == 0;
+   var module = Context.Request.Query["module"];
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <!--SEARCH-->
+      <div class="pagetitle row">
+         <div class="float-start col-md-6">
+            <h1 class="card-title fs-2 ">Facility</h1>
+         </div>
+
+         <div class="float-end col-md-6 pt-1">
+            @using (Html.BeginForm("Index", "Facilities", FormMethod.Get, new { id = "filterForm" }))
+            {
+               <div class="input-group mb-2">
+                  @Html.TextBox("search", null, new { @class = "form-control", id = "nameInput", placeholder = "Search by Facility or HMIS code" })
+                  @Html.Hidden("page", Model.PageNumber)
+                  @Html.Hidden("module", "Clients")
+
+                  <div class="input-group-append">
+                     <button type="submit" class="btn btn-primary rounded-1 search-p">
+                        <i class="bi bi-search"></i>
+                     </button>
+
+                     <button class="btn btn-secondary btn-sm p-13" id="showAllButton">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                     </button>
+                  </div>
+               </div>
+            }
+         </div>
+
+         <hr class="customhr mt-0 ms-0 ms-sm-2 mt-2 mt-sm-0">
+         <!--ADD-->
+         <div align="left" class="mt-2 mb-2">
+            @* <a class="btn btn-primary float-start" href="/Facilities/Create?module=@module&oid=@ViewBag.Oid"><i class="bi bi-plus-circle"></i> Add new</a> *@
+            <a class="btn btn-primary" href="/Facilities/Create?oid=@ViewBag.Oid&module=@module"><i class="bi bi-plus-circle"></i> Add new</a>
+            <a href="/Districts/Index?module=@module&oid=@ViewBag.ProvinceId" class="btn btn-outline-secondary float-end"><i class="bi bi-arrow-left-circle"></i> Back</a>
+         </div>
+      </div>
+
+      <!--ALERT MESSAGE-->
+      @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+      {
+         <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+            <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+
+      <div class="row mt-3">
+         <div class="col-md-12">
+
+            <!--CARD START-->
+            <div class="card">
+               <div class="card-body font-md mt-3">
+
+                  <div class="col-md-12 mb-2" style="font-size:12px;">
+                     <span>District :</span>
+                     <span class=" fw-bold">@ViewBag.DistrictName</span>
+                  </div>
+
+                  <div class="table-responsive">
+                     <!-- TABLE -->
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              <th scope="col">SL</th>
+                              @* <th scope="col">Province</th>
+                              <th scope="col">District</th> *@
+                              <th scope="col">Facility</th>
+                              <th scope="col">Facility Code</th>
+                              <th scope="col">HMIS Code</th>
+                              <th scope="col">Longitude</th>
+                              <th scope="col">Latitude</th>
+                              <th scope="col">Location</th>
+                              <th scope="col">Facility Type</th>
+                              <th scope="col">Ownership</th>
+                              <th scope="col">Private Facility</th>
+                              <th scope="col">DFZ Facility</th>
+                              <th scope="col">Active</th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
+
+                        <tbody>
+                           @if (noMatchFound)
+                           {
+                              <tr style="color:red; text-align: center;">
+                                 <th colspan="8"><span class="fw-bold fs-5">No match Found!</span></th>
+                              </tr>
+                           }
+                           else
+                           {
+                              @foreach (var facilitiy in Model)
+                              {
+                                 <tr>
+                                    <th scope="row">@sl</th>
+                                    @* <td>@facilitiy.District.Provinces.Description</td>
+                                    <td>@facilitiy.District.Description</td> *@
+                                    <td>@facilitiy.Description</td>
+                                    <td>@facilitiy.FacilityMasterCode</td>
+                                    <td>@facilitiy.HMISCode</td>
+                                    <td>@facilitiy.Longitude</td>
+                                    <td>@facilitiy.Latitude</td>
+                                    <td>@facilitiy.Location</td>
+                                    <td>@facilitiy.FacilityType</td>
+                                    <td>@facilitiy.Ownership</td>
+                                    <td>
+                                       @if (facilitiy.IsPrivateFacility == true)
+                                       {
+                                          <span> Yes</span>
+                                       }
+                                       else
+                                       {
+                                          <span> No</span>
+                                       }
+                                    </td>
+
+                                    <td>
+                                       @if (facilitiy.IsDFZ == true)
+                                       {
+                                          <span> Yes</span>
+                                       }
+                                       else
+                                       {
+                                          <span> No</span>
+                                       }
+                                    </td>
+
+                                    <td>
+                                       @if (facilitiy.IsLive == true)
+                                       {
+                                          <span> Yes</span>
+                                       }
+                                       else
+                                       {
+                                          <span> No</span>
+                                       }
+                                    </td>
+
+                                    <td>
+                                       @* <a class="btn btn-outline-secondary btn-sm" asp-controller="Facilities" asp-action="Edit" asp-route-id="@facilitiy.Oid"><i class="bi bi-pencil-square"></i> Edit</a> *@
+                                       <a class="btn btn-outline-secondary btn-sm" href="/Facilities/Edit/@facilitiy.Oid?module=@module"><i class="bi bi-pencil-square"></i> Edit</a>
+                                    </td>
+                                 </tr>
+                                 sl++;
+                              }
+                           }
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <!--PAGINATION-->
+                  @Html.Partial("~/Views/Shared/_Pagination.cshtml")
+
+               </div>
+            </div>
+            <!--CARD END-->
+         </div>
+      </div>
+   </div>
+</div>

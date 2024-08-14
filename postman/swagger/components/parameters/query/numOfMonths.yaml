@@ -1,0 +1,7 @@
+in: query
+name: numOfMonths
+description: number of months
+required: false
+schema:
+  type: integer
+  example: 11

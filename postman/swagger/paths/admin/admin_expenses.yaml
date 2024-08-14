@@ -1,0 +1,71 @@
+get:
+  description: Get all expenses of the currently logged in admin
+  summary: Get all expenses of the currently logged in admin
+  operationId: getAdminExpenses
+  tags:
+    - Admin
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+    - $ref: ../../components/parameters/query/expand.yaml
+    - $ref: ../../components/parameters/query/dynamic.yaml
+  responses:
+    "200":
+      description: expenses fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expenses fetched successfully
+              data:
+                type: object
+                properties:
+                  expenses:
+                    type: array
+                    items:
+                      $ref: ../../components/schemas/Expense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/expense
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+                  firstPage:
+                    type: string
+                    example: /api/v1/expense?page=1&limit=10
+                  lastPage:
+                    type: string
+                    example: /api/v1/expense?page=10&limit=10
+                  nextPage:
+                    type: string
+                    example: /api/v1/expense?page=2&limit=10
+                  prevPage:
+                    type: string
+                    example: /api/v1/expense?page=1&limit=10
+              pagination:
+                $ref: ../../components/schemas/pagination.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "403":
+      $ref: ../../components/responses/403.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

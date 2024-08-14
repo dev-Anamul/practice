@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientDistrictIfZambianBorn.cs" />
+    <Compile Remove="ClientIfAgeGreater18.cs" />
+    <Compile Remove="ClientIfDOBIsFutureDate.cs" />
+    <Compile Remove="ClientIfNotHaveCellPhone.cs" />
+    <Compile Remove="ClientIfOutsideZambia.cs" />
+    <Compile Remove="ClientSpouse.cs" />
+    <Compile Remove="IfAgeBelow18.cs" />
+    <Compile Remove="IfFutureDate.cs" />
+    <Compile Remove="IfInvalidCountryCode.cs" />
+    <Compile Remove="IfNotAlphabet.cs" />
+    <Compile Remove="IfNotDecimal.cs" />
+    <Compile Remove="IfNotEmailInCorrectFormat.cs" />
+    <Compile Remove="IfNotInteger.cs" />
+    <Compile Remove="IfOldDate.cs" />
+    <Compile Remove="IfPastDate.cs" />
+    <Compile Remove="IfSexNotSelectedForClient.cs" />
+    <Compile Remove="IfSexNotSelectedForUser.cs" />
+    <Compile Remove="IfYesNoNotSelected.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="EntityBackup\Client.cs~RF2afc0319.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

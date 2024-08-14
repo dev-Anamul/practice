@@ -1,0 +1,113 @@
+﻿@model Domain.Entities.MeasuringUnit
+
+@{
+   
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .select2-selection__rendered {
+        line-height: 31px !important;
+    }
+
+    .select2-container .select2-selection--single {
+        height: 35px !important;
+    }
+
+    .select2-selection__arrow {
+        height: 34px !important;
+    }
+
+    .form-floating .select2-selection--single {
+        padding-top: 3.33rem; /* Adjust this value as needed */
+    }
+
+        .form-floating .select2-selection--single .select2-selection__rendered {
+            line-height: 1.625rem; /* Adjust this value as needed */
+            margin-top: -30px;
+        }
+
+    .select2-container--bootstrap .select2-results__option {
+        min-height: 2.625rem; /* Adjust this value as needed */
+    }
+</style>
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <div class="card">
+         <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+            <!--HEADER-->
+            <div class="pagetitle">
+               <h4 class="card-title fs-2 fw-bold mb-0">Measuring Unit</h4>
+               <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+               <hr class="mt-0">
+            </div>
+
+            <!--FORM START-->
+            <form class="row g-1" method="post" asp-action="Edit" asp-controller="MeasuringUnits">
+               <input type="text" asp-for="Oid" hidden />
+
+               <!--TEST-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="TestId" name="TestID" class="form-select" aria-label="State" asp-items="@ViewBag.Test">
+                        <option value="">Select</option>
+                     </select>
+                     <label class="required" asp-for="TestId">Test</label>
+                     <span asp-validation-for="TestId" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--DESCRIPTION-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90">
+                     <label class="required" asp-for="Description">Measuring Unit</label>
+                     <span asp-validation-for="Description" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--MINIMUM RANGE-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="MinimumRange" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                            <label class="required" asp-for="MinimumRange">Minimum Range</label>
+                            <span asp-validation-for="MinimumRange" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--MIXIMUM RANGE-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="MaximumRange" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                            <label class="required" asp-for="MaximumRange">Maximum Range</label>
+                            <span asp-validation-for="MaximumRange" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--ACTIONS-->
+               <div class="col-12 mt-0 mt-3 text-center">
+                  <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit">
+                     <i class="bi bi-check2-circle"></i> Submit
+                  </button>
+                  <a href="/MeasuringUnits/Index?module=Investigation" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+@section Scripts{
+
+    <script>
+
+        console.log($("#TestId").val())
+        $(document).ready(function () {
+            // Initialize select2
+            $("#TestId").select2();
+        });
+
+
+    </script>
+    }

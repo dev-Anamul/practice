@@ -1,0 +1,8 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        example: 5f9d5b9b9d5b9f9d5b9d5b9f
+  - $ref: ./SupportMessageDto.yaml
+  - $ref: ./Timestamp.yaml

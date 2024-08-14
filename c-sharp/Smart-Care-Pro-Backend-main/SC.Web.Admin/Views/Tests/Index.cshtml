@@ -1,0 +1,171 @@
+﻿@model X.PagedList.IPagedList<Domain.Entities.Test>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+   
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var sl = Convert.ToInt32(ViewBag.SlNo);
+   var search = ViewData["Search"] as string;
+   var noMatchFound = !string.IsNullOrEmpty(search) && Model.Count == 0;
+}
+@{
+   var module = Context.Request.Query["module"];
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <!--SEARCH-->
+      <div class="pagetitle row">
+         <div class="float-start col-md-6">
+            <h1 class="card-title fs-2">Test</h1>
+         </div>
+
+         <div class="float-end col-md-6 pt-1">
+            @using (Html.BeginForm())
+            {
+               <div class="input-group">
+                  @Html.TextBox("search", null, new { @class = "form-control", placeholder = "Search by Test" })
+                  @Html.Hidden("page", Model.PageNumber)
+                  @Html.Hidden("module", "Investigation")
+                  <div class="input-group-append">
+                     <button type="submit" class="btn btn-primary rounded-1 search-p">
+                        <i class="bi bi-search"></i>
+                     </button>
+                  </div>
+               </div>
+            }
+         </div>
+
+          <hr class="customhr mt-0 ms-0 ms-sm-2 mt-2 mt-sm-0">
+
+         <!--ADD-->
+         <div class="row d-flex justify-content-between mt-2 mb-2">
+             <div class="w-15">
+               <a class="btn btn-primary float-start" href="/Tests/Create?oid=@ViewBag.Oid&module=Investigation"><i class="bi bi-plus-circle"></i> Add new</a>
+               <a href="/TestSubtypes/Index?oid=@ViewBag.TestTypeId&module=Investigation" class="btn btn-outline-secondary float-end"><i class="bi bi-arrow-left-circle"></i> Back</a>
+             </div>
+         </div>
+      </div>
+
+      <!--ALERT MESSAGE-->
+      @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+      {
+         <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+            <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+
+      <div class="row mt-3">
+         <div class="col-md-12">
+
+            <!--CARD START-->
+            <div class="card">
+               <div class="card-body font-md mt-3">
+                   <div class="col-md-12 mb-2" style="font-size:12px;">
+                       <span>Test Sub Type :</span>
+                       <span class=" fw-bold">@ViewBag.TestSubType</span>
+                   </div>
+
+                  <div class="table-responsive">
+                     <!-- TABLE -->
+                     <table class="table font-md">
+                           <thead>
+                              <tr>
+                                 <th scope="col">SL</th>   
+                                 <th scope="col">Test Type</th>
+                                 <th scope="col">Sub Type</th>
+                                 <th scope="col">Title</th>
+                                 <th scope="col">Lonic</th>
+                                 <th scope="col">Description</th>
+                                 <th scope="col">Result Type</th>
+                                 <th scope="col"></th>
+                              </tr>
+                           </thead>
+          
+                           <tbody>
+                              @if (noMatchFound)
+                              {
+                                 <tr style="color:red; text-align: center;">
+                                    <th colspan="7"><span class="fw-bold fs-5">No match Found!</span></th>
+                                 </tr>
+                              }
+                              else
+                              {
+                                    @foreach (var tests in Model)
+                                    {
+                                       <tr>
+                                          <th scope="row">@sl</th>
+                                          <td>@tests.TestSubtype.TestType.Description</td>
+                                          <td>@tests.TestSubtype.Description</td>
+                                          <td>@tests.Title</td>
+                                          <td>@tests.LONIC</td>
+                                          <td>@tests.Description</td>
+                                          <td>@tests.ResultType</td>
+
+                                          <td>
+                                             @* <a class="btn btn-sm btn-outline-secondary" asp-controller="Tests" asp-action="Edit" asp-route-id="@tests.Oid"><i class="bi bi-pencil-square"></i> Edit</a> *@
+                                             <a class="btn btn-sm btn-outline-secondary" href="/Tests/Edit/@tests.Oid?module=Investigation"> <i class="bi bi-pencil-square"></i> Edit</a>
+                                          </td>
+                                       </tr>
+                                       sl++;
+                                    }
+                              }                      
+                           </tbody>
+                     </table>
+                  </div>
+
+                  <!--PAGINATION-->
+                  @if (Model.Count > 0)
+                  {
+                     <div class="d-flex justify-content-center">
+                        <nav>
+                           <ul class="pagination mt-3">
+                              @if (Model.PageNumber > 3)
+                              {
+                                 <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = 1, oid = ViewBag.Oid, module })">
+                                       <span aria-hidden="true">&laquo;</span>
+                                       <span class="sr-only"></span>
+                                    </a>
+                                 </li>
+                                 <li class="page-item disabled">
+                                    <a class="page-link">...</a>
+                                 </li>
+                              }
+
+                              @for (int i = Math.Max(1, Model.PageNumber - 2); i <= Math.Min(Model.PageNumber + 2, Model.PageCount); i++)
+                              {
+                                 <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i, oid = ViewBag.Oid, module })">@i</a>
+                                 </li>
+                              }
+
+                              @if (Model.PageNumber < Model.PageCount - 2)
+                              {
+                                 <li class="page-item disabled">
+                                    <a class="page-link">...</a>
+                                 </li>
+                                 <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PageCount, oid = ViewBag.Oid, module })">
+                                       <span aria-hidden="true">&raquo;</span>
+                                       <span class="sr-only"></span>
+                                    </a>
+                                 </li>
+                              }
+                           </ul>
+                        </nav>
+                     </div>
+                  }
+
+
+
+               </div>
+            </div>
+            <!--CARD END-->
+         </div>
+      </div>
+   </div>
+</div>

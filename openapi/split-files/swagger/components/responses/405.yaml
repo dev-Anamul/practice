@@ -1,0 +1,16 @@
+description: The request method is not allowed on the resource
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 405
+        status:
+          type: string
+          example: Method Not Allowed
+        message:
+          type: string
+          example: The request method is not allowed on the resource

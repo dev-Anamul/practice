@@ -1,0 +1,83 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>@ViewData["Title"] CarePro</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/Logo.ico" rel="icon">
+    <link href="~/assets/img/Logo.ico" rel="apple-touch-icon">
+
+   <!-- Google Fonts -->
+   <link href="~/css/cdns/googleapis.css" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/css/cdns/jquery-ui.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/site.css" rel="stylesheet">
+    <link href="~/assets/css/style.css" rel="stylesheet">
+</head>
+
+@*<script>
+    const baseapi = '@Configuration.GetSection("SmartCareSettings").GetSection("SCApiBaseUri").Value';
+</script>*@
+
+<body>
+
+    @*<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+    <span class="card-title d-lg-block">Smart Care</span>
+    </form>
+    </div>
+    </header>*@
+
+    <main>
+        <section class="section">
+            @RenderBody()
+        </section>
+        <div class="loader" style="display:none;"></div>
+    </main>
+
+   <!-- End #main -->
+
+   @*<!-- ======= Footer ======= -->
+   <footer id="footerLogo" class="footerLogo pt-lg-5">
+      <div class="copyright">
+         <span>
+            <a class="brand-logo" href="https://www.moh.gov.zm/">
+               <img src="/assets/img/for 1.png" alt="logo" style="width:130px;" />
+            </a>
+            <a class="brand-logo" href="https://www.cdc.gov/">
+               <img src="/assets/img/For2.png" alt="logo" style="width:70px;" />
+            </a>
+            <a class="brand-logo ms-4" href="http://ihmafrica.org/">
+               <img src="/assets/img/for 3.png" alt="logo" style="width:100px;" />
+            </a>
+         </span>
+      </div>
+   </footer><!-- End Footer -->*@
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

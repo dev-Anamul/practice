@@ -1,0 +1,112 @@
+﻿@model X.PagedList.IPagedList<Domain.Entities.TBSuspectingReason>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+   
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var sl = Convert.ToInt32(ViewBag.SlNo);
+   var search = ViewData["Search"] as string;
+   var noMatchFound = !string.IsNullOrEmpty(search) && Model.Count == 0;
+   var (module, parent) = (Context.Request.Query["module"].ToString(), Context.Request.Query["parent"].ToString());
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <!--SEARCH-->
+      <div class="pagetitle row">
+         <div class="float-start col-md-6">
+            <h1 class="card-title fs-2 ">TB Suspecting Reasons</h1>
+         </div>
+
+         <div class="float-end col-md-6 pt-1">
+            @using (Html.BeginForm("Index", "TBSuspectingReasons", FormMethod.Get, new { id = "filterForm" }))
+            {
+               <div class="input-group">
+                  @Html.TextBox("search", null, new { @class = "form-control", id = "nameInput", placeholder = "Search by TB Suspecting Reason" })
+                  @Html.Hidden("page", Model.PageNumber)
+                  <input type="hidden" name="module" value="@module" />
+                  <input type="hidden" name="parent" value="@parent" />
+
+                  <div class="input-group-append">
+                     <button type="submit" class="btn btn-primary rounded-1 search-p">
+                        <i class="bi bi-search"></i>
+                     </button>
+
+                    <button class="btn btn-secondary btn-sm p-13" id="showAllButton">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                  </div>
+               </div>
+            }
+         </div>
+
+         <hr class="customhr mt-0 ms-0 ms-sm-2 mt-2 mt-sm-0">
+         <!--ADD-->
+         <div align="left" class="mt-2 mb-2">
+            <a class="btn btn-primary" href="/TBSuspectingReasons/Create?module=@module&parent=@parent"><i class="bi bi-plus-circle"></i> Add new</a>
+         </div>
+      </div>
+
+      <!--ALERT MESSAGE-->
+      @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+      {
+         <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+            <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+
+      <div class="row mt-3">
+         <div class="col-md-12">
+
+            <!--CARD START-->
+            <div class="card">
+               <div class="card-body font-md mt-3">
+
+                  <div class="table-responsive">
+                     <!-- TABLE -->
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              <th scope="col">SL</th>
+                              <th scope="col">TB Suspecting Reason</th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (noMatchFound)
+                           {
+                              <tr style="color:red; text-align: center;">
+                                 <th colspan="5"><span class="fw-bold fs-5">No match Found!</span></th>
+                              </tr>
+                           }
+                           else
+                           {
+                              @foreach (var tbFinding in Model)
+                              {
+                                 <tr>
+                                    <th scope="row">@sl</th>
+                                    <td>@tbFinding.Description</td>
+
+                                    <td><a class="btn btn-outline-secondary" href="/TBSuspectingReasons/Edit/@tbFinding.Oid?module=@module&parent=@parent"><i class="bi bi-pencil-square"></i> Edit</a></td>
+                                 </tr>
+                                 sl++;
+                              }
+                           }
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <!--PAGINATION-->
+                  @Html.Partial("~/Views/Shared/_Pagination-parent.cshtml")
+
+               </div>
+            </div>
+            <!--CARD END-->
+         </div>
+      </div>
+   </div>
+</div>

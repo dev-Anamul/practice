@@ -1,0 +1,59 @@
+get:
+  description: Get GST report
+  summary: Get GST report
+  operationId: getGstReport
+  tags:
+    - Report
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/startDate.yaml
+    - $ref: ../../components/parameters/query/endDate.yaml
+    - $ref: ../../components/parameters/query/userId.yaml
+  responses:
+    "200":
+      description: GST report fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: GST report fetched successfully
+              data:
+                type: object
+                properties:
+                  gstReport:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          example: "2020-04-20T00:00:00.000Z"
+                        totalIncome:
+                          type: integer
+                          format: int32
+                          example: 1000
+                        totalExpense:
+                          type: integer
+                          format: int32
+                          example: 1000
+                        totalGst:
+                          type: integer
+                          format: int32
+                          example: 1000
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

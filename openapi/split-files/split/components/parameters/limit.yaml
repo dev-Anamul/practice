@@ -1,0 +1,7 @@
+in: query
+name: limit
+description: Number of items per page
+schema:
+  type: integer
+  format: int32
+  example: 10

@@ -1,0 +1,316 @@
+﻿@using static Utilities.Constants.Enums
+@model Domain.Dto.TestCreateDto
+
+@{  
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <!--ALERT MESSAGE-->
+      @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+      {
+         <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+            <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+
+        <div class="card">
+            <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+                <!--HEADER-->
+                <div class="pagetitle">
+                    <h4 class="card-title fs-2 fw-bold mb-0">Test</h4>
+                    <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+                    <hr class="mt-0">
+                </div>
+
+                <!--FORM START-->
+                <form class="row g-1" method="post" asp-action="CreateTest" asp-controller="Tests">
+
+                   <!--TEST TYPE-->
+                   <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <select for="TestTypeID" id=" TestTypeID" data-val="true" data-val-required="Required." class="form-select" aria-label="State" onchange="GetSubTypebyTest(event)" asp-items="@ViewBag.TestType">
+                                <option value="">Select</option>
+                            </select>
+                            <label class="required" for="TestTypeID">Test Type</label>
+                            <span validation-for="TestTypeID" class="text-danger"></span>
+                        </div>
+                   </div>
+
+                    <!--TEST SUB TYPE-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <select asp-for="SubtypeId" id="SubtypeID" name="SubtypeID" data-val="true" data-val-required="Required." class="form-select" aria-label="State">
+                                <option value="">Select</option>
+                            </select>
+                            <label class="required" asp-for="SubtypeId">Sub-Type</label>
+                            <span asp-validation-for="SubtypeId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--TITLE-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="Title" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90">
+                            <label class="required" asp-for="Title">Title</label>
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--LONIC-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="LONIC" type="text" class="form-control" data-val-length-max="20">
+                            <label asp-for="LONIC">Lonic</label>
+                        </div>
+                    </div>
+
+                    <!--DESCRIPTION-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="Description" type="text" class="form-control" data-val-length-max="20">
+                            <label asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!-- ... Other form fields ... -->
+                    <!-- RESULT TYPE -->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <select id="ResultType" asp-for="ResultType" class="form-select" asp-items="Html.GetEnumSelectList<ResultType>()">
+                                <option value="">Select</option>
+                            </select>
+                            <label asp-for="ResultType">Result Type</label>
+                        </div>
+                    </div>
+
+                    <!-- MEASURING UNIT SECTION -->
+                    <div id="measuringUnitSection">
+                        <!-- DESCRIPTION -->
+                        <div class="col-md-12">
+                            <div class="form-floating mt-2">
+                                <input asp-for="MeasuringUnitDescription" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90">
+                                <label class="required" asp-for="MeasuringUnitDescription">Measuring Unit</label>
+                                <span asp-validation-for="MeasuringUnitDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- MINIMUM RANGE -->
+                        <div class="col-md-12">
+                            <div class="form-floating mt-2">
+                                <input asp-for="MinimumRange" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                                <label class="required" asp-for="MinimumRange">Minimum Range</label>
+                                <span asp-validation-for="MinimumRange" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- MAXIMUM RANGE -->
+                        <div class="col-md-12">
+                            <div class="form-floating mt-2">
+                                <input asp-for="MaximumRange" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                                <label class="required" asp-for="MaximumRange">Maximum Range</label>
+                                <span asp-validation-for="MaximumRange" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESULT OPTION -->
+                    <div id="resultOptionSection">
+                        <div class="col-md-12">
+                            <div class="mt-2">
+                                <label class="required" asp-for="ResultOptionDescriptions">Result Option Description</label>
+                                <input asp-for="ResultOptionDescriptions" type="text" class="form-control p-3" data-val="true" data-val-required="Required." data-val-length-max="90" id="resultOptionInput" placeholder="Please select the appropriate options from the check boxes or type each value with a comma.">                           
+                                <span asp-validation-for="ResultOptionDescriptions" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">        
+                           <div class="col-md-12 mt-2">
+
+                              <div class="row">
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="abnormalCheckbox" value="Abnormal">
+                                      <label class="form-check-label" for="abnormalCheckbox">Abnormal</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="normalCheckbox" value="Normal">
+                                         <label class="form-check-label" for="normalCheckbox">Normal</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="positiveCheckbox" value="Positive">
+                                         <label class="form-check-label" for="positiveCheckbox">Positive</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="negativeCheckbox" value="Negative">
+                                         <label class="form-check-label" for="negativeCheckbox">Negative</label>
+                                    </div>
+                                 </div>                                                                  
+                              </div>
+
+                              <div class="row mt-2">
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="indeterminateCheckbox" value="Indeterminate">
+                                         <label class="form-check-label" for="indeterminateCheckbox">Indeterminate</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="detectableCheckbox" value="Detectable">
+                                         <label class="form-check-label" for="detectableCheckbox">Detectable</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="notDetectedCheckbox" value="Not detected">
+                                         <label class="form-check-label" for="notDetectedCheckbox">Not detected</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                         <input class="form-check-input" type="checkbox" id="reactiveCheckbox" value="Reactive">
+                                         <label class="form-check-label" for="reactiveCheckbox">Reactive</label>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row mt-2">
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" id="nonreactiveCheckbox" value="Non-reactive">
+                                       <label class="form-check-label" for="nonreactiveCheckbox">Non-reactive</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" id="sensitiveCheckbox" value="Sensitive">
+                                       <label class="form-check-label" for="sensitiveCheckbox">Sensitive</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" id="resistantCheckbox" value="Resistant">
+                                       <label class="form-check-label" for="resistantCheckbox">Resistant</label>
+                                    </div>
+                                 </div>
+
+                                 <div class="col-3">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" id="notDoneCheckbox" value="Not Done">
+                                       <label class="form-check-label" for="notDoneCheckbox">Not Done</label>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="mt-3">
+                                 <span class="fw-bold fs-6">If required options are not listed above, please type them each value with a comma manually, e.g., Positive, Nil, Small, etc.</span>
+                              </div>
+                           </div>
+                        </div>
+                    </div>
+
+                    <!--ACTIONS-->
+                     <div class="col-12 mt-0 mt-3 text-center">
+                        <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit"> <i class="bi bi-check2-circle"></i> Submit</button>
+                        <a href="/Tests/IndexTest?module=Investigation" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+                     </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <!--JS LINK-->
+    <script src="~/js/site.js"></script>
+    <script src="~/js/cdns/jquery.min.js"></script>
+
+    <script>
+
+        function GetSubTypebyTest(event) {
+            var oid = event.target.value;
+            $.ajax({
+                type: 'GET',
+                url: '/Tests/LoadTestSubType',
+                dataType: 'json',
+                data: { id: oid },
+                success: function (subType) {
+                    $("#SubtypeID").empty();
+                    $("#SubtypeID").append(`<option value="0">Select Sub-type</option>`);
+                    var data = "";
+                    subType.forEach(function (item) {
+                        data = `<option value="${item.oid}">${item.description}</option>`
+                        $("#SubtypeID").append(data);
+                    })
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            toggleFields();
+
+            $('#ResultType').change(function () {
+                toggleFields();
+            });
+
+            function toggleFields() {
+                var resultType = $('#ResultType').val();
+                var measuringUnitSection = $('#measuringUnitSection');
+                var resultOptionSection = $('#resultOptionSection');
+
+                measuringUnitSection.hide();
+                resultOptionSection.hide();
+
+                if (resultType === '2') {
+                    measuringUnitSection.show();
+                    enableMeasuringUnitFields();
+                } else if (resultType === '3') {
+                    resultOptionSection.show();
+                    enableResultOptionFields();
+                }
+            }
+
+            function enableMeasuringUnitFields() {
+                $('#MeasuringUnitDescription').prop('disabled', false);
+                $('#MinimumRange').prop('disabled', false);
+                $('#MaximumRange').prop('disabled', false);
+            }
+
+            function enableResultOptionFields() {
+                $('#ResultOptionDescription').prop('disabled', false);
+            }
+        });
+
+        $(document).ready(function () {
+            $('input[type="checkbox"]').change(function () {
+                var selectedValues = $('input[type="checkbox"]:checked').map(function () {
+                    return this.value;
+                }).get();
+
+                $('#resultOptionInput').val(selectedValues.join(', '));
+            });
+        });
+    </script>
+}

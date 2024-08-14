@@ -1,0 +1,130 @@
+get:
+  description: Get single tax slab
+  summary: Get single tax slab
+  operationId: getTaxSlabById
+  tags:
+    - Tax Slab
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: tax slab fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: tax slab fetched successfully
+              data:
+                $ref: ../../components/schemas/TaxSlab.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/tax-slabs
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: Update specific tax slab by id
+  summary: Update specific tax slab by id
+  operationId: updateTaxSlabById
+  tags:
+    - Tax Slab
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/TaxSlabDto.yaml
+  responses:
+    "200":
+      description: tax slab updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: tax slab updated successfully
+              data:
+                $ref: ../../components/schemas/TaxSlab.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/tax-slabs
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific tax slab by id
+  summary: Delete specific tax slab by id
+  operationId: deleteTaxSlabById
+  tags:
+    - Tax Slab
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: tax slab deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: tax slab deleted successfully
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

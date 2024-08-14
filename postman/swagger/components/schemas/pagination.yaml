@@ -1,0 +1,26 @@
+type: object
+properties:
+  page:
+    type: integer
+    format: int32
+    example: 5
+  limit:
+    type: integer
+    format: int32
+    example: 10
+  next:
+    type: integer
+    format: int32
+    example: 3
+  prev:
+    type: integer
+    format: int32
+    example: 4
+  totalPage:
+    type: integer
+    format: int32
+    example: 100
+  totalItems:
+    type: integer
+    format: int32
+    example: 1500

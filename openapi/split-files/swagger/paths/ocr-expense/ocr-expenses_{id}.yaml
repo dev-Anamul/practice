@@ -1,0 +1,148 @@
+get:
+  description: Get single ocr expense
+  summary: Get single ocr expense
+  operationId: getOCRExpense
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: ocr expense fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expense fetched successfully
+              data:
+                $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/ocr-expenses
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: Update specific ocr expense by id
+  summary: Update specific ocr expense by id
+  operationId: updateOCRExpense
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/OCRExpenseDto.yaml
+            - type: object
+              properties:
+                imageUrl:
+                  type: string
+                  format: binary
+  responses:
+    "200":
+      description: ocr expense updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expense updated successfully
+              data:
+                $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/ocr-expenses
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific ocr expense by id
+  summary: Delete specific ocr expense by id
+  operationId: deleteOCRExpense
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: ocr expense deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expense deleted successfully
+              data:
+                $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/ocr-expenses
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

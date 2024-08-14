@@ -1,0 +1,56 @@
+post:
+  description: this endpoint for create notification
+  summary: create notification
+  operationId: createNotification
+  tags:
+    - Notification
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/NotificationDto.yaml
+            - type: object
+              properties:
+                imageUrl:
+                  type: string
+                  format: binary
+  responses:
+    "201":
+      description: notification created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification created successfully
+              data:
+                $ref: ../../components/schemas/Notification.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/notifications/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/notifications
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

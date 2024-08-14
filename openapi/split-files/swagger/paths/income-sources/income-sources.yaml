@@ -1,0 +1,109 @@
+post:
+  description: Create a new income source for the currently logged in user
+  summary: Create a new income source
+  operationId: createIncomeSource
+  tags:
+    - Income Source
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/incomeSourceDto.yaml
+  responses:
+    "201":
+      description: income source created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income source created successfully
+              data:
+                $ref: ../../components/schemas/IncomeSource.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/income-sources/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/income-sources
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: Get all income sources of the currently logged in user
+  summary: Get all income sources
+  operationId: getIncomeSources
+  tags:
+    - Income Source
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/page.yaml
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/order.yaml
+    - $ref: ../../components/parameters/query/sort.yaml
+    - $ref: ../../components/parameters/query/search.yaml
+    - $ref: ../../components/parameters/query/fields.yaml
+  responses:
+    "200":
+      description: income sources fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: income sources fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/IncomeSource.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/income-sources?page=1&limit=10
+                  firstPage:
+                    type: string
+                    example: /api/v1/income-sources?page=1&limit=10
+                  lastPage:
+                    type: string
+                    example: /api/v1/income-sources?page=10&limit=10
+                  nextPage:
+                    type: string
+                    example: /api/v1/income-sources?page=2&limit=10
+                  prevPage:
+                    type: string
+                    example: /api/v1/income-sources?page=1&limit=10
+              pagination:
+                $ref: ../../components/schemas/pagination.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

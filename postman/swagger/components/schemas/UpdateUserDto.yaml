@@ -1,0 +1,31 @@
+type: object
+properties:
+  firstName:
+    type: string
+    example: John
+  middleName:
+    type: string
+    example: Doe
+  lastName:
+    type: string
+    example: Doe
+  mobile:
+    type: string
+    example: 1234567890
+  dateOfBirth:
+    type: string
+    example: "1990-01-01T00:00:00.000Z"
+  email:
+    type: string
+    format: email
+    example: example@gmail.com
+  address:
+    type: string
+    example: Ashulia, Savar, Dhaka
+  gstFrequency:
+    type: string
+    enum:
+      - monthly
+      - two-monthly
+      - six-monthly
+    example: monthly

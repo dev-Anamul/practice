@@ -1,0 +1,196 @@
+﻿@using static Utilities.Constants.Enums;
+@model Domain.Entities.Facility
+
+@{ 
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var module = Context.Request.Query["module"];
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <!--ALERT MESSAGE-->
+      @if (TempData[Utilities.Constants.SessionConstants.Message] != null)
+      {
+         <div class="alert alert-success alert-dismissible show fade  mt-1" role="alert">
+            <i class=""></i>&nbsp;@TempData[Utilities.Constants.SessionConstants.Message]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+
+      <div class="card">
+         <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+            <!--HEADER-->
+            <div class="pagetitle">
+               <h4 class="card-title fs-2 fw-bold mb-0">Facility</h4>
+               <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+               <hr class="mt-0">
+            </div>
+
+            <!--FORM START-->
+            <form class="row g-1" method="post" asp-action="Create" asp-controller="Facilities">
+
+               <input type="hidden" value="@ViewBag.DistrictId" asp-for="DistrictId" />
+
+               <!--NTG Level Two-->
+               <div class="col-md-12">
+                  <div class="form-floating mb-2">
+                     <span>District :</span>
+                     <span class="fs-6 fw-bold mb-0">@ViewBag.DistrictName</span>
+                  </div>
+               </div>
+
+               <!--FACILITY NAME-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90" data-val-length-min="2" data-val-length="Facility should be atleast 2 digits.">
+                     <label class="required" asp-for="Description">Facility</label>
+                     <span asp-validation-for="Description" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--Facility Master Code-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="FacilityMasterCode" id="Facility Master Code" type="text" class="form-control">
+                     <label class="required" asp-for="FacilityMasterCode">Facility Master Code </label>
+                     <span asp-validation-for="FacilityMasterCode" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--HMIS CODE-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="HMISCode" id="HMISCode" type="text" class="form-control">
+                     <label class="" asp-for="HMISCode">HMIS Code </label>
+                     <span asp-validation-for="HMISCode" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--LONGITUDE-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="Longitude" type="text" class="form-control">
+                     <label class="" asp-for="Longitude">Longitude </label>
+                  </div>
+               </div>
+
+               <!--LATITIDE-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <input asp-for="Latitude" type="text" class="form-control">
+                     <label class="" asp-for="Latitude">Latitude </label>
+                  </div>
+               </div>
+
+               <!--Location-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="Location" class="form-select" asp-items="Html.GetEnumSelectList(typeof (Location))" aria-label="State">
+                        <option value="">Select</option>
+                     </select>
+                     <label asp-for="Location">Location</label>
+                     <span asp-validation-for="Location" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--Facility Type-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="FacilityType" class="form-select" asp-items="Html.GetEnumSelectList(typeof (FacilityType))" aria-label="State">
+                        <option value="">Select</option>
+                     </select>
+                     <label asp-for="FacilityType">Facility Type</label>
+                     <span asp-validation-for="FacilityType" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--Ownership-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="Ownership" class="form-select" asp-items="Html.GetEnumSelectList(typeof (Ownership))" aria-label="State">
+                        <option value="">Select</option>
+                     </select>
+                     <label asp-for="Ownership">Ownership</label>
+                     <span asp-validation-for="Ownership" class="text-danger"></span>
+                  </div>
+               </div>
+
+               <!--IS PRIVATE FACILITY-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="IsPrivateFacility" class="form-select">
+                        <option>Select</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                     </select>
+                     <label asp-for="IsPrivateFacility">Is Facility Private?</label>
+                  </div>
+               </div>
+
+               <!--IS PRIVATE FACILITY-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="IsDFZ" class="form-select">
+                        <option>Select</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                     </select>
+                     <label asp-for="IsDFZ">Is DFZ?</label>
+                  </div>
+               </div>
+
+               <!--IS Active FACILITY-->
+               <div class="col-md-12">
+                  <div class="form-floating mt-2">
+                     <select asp-for="IsLive" class="form-select">
+                        <option>Select</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                     </select>
+                     <label asp-for="IsLive">Active</label>
+                  </div>
+               </div>
+
+               <!--ACTIONS-->
+               <div class="col-12 mt-0 mt-3 text-center">
+                  <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit">
+                     <i class="bi bi-check2-circle"></i> Submit
+                  </button>
+                  <a href="/Facilities/Index?module=@module&oid=@ViewBag.DistrictId" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+
+@section Scripts {
+   <!--JS LINK-->
+   <script src="~/js/site.js"></script>
+   <script src="~/js/cdns/jquery.min.js"></script>
+
+   <script>
+
+      function GetDistrictbycustomer(event) {
+         var oid = event.target.value;
+         $.ajax({
+            type: 'GET',
+            url: '/Facilities/LoadDistrict',
+            dataType: 'json',
+            data: { id: oid },
+            success: function (districs) {
+               $("#DistrictID").empty();
+               $("#DistrictID").append(`<option value="0">Select District</option>`);
+               var data = "";
+               districs.forEach(function (item) {
+                  data = `<option value="${item.oid}">${item.description}</option>`
+                  $("#DistrictID").append(data);
+               })
+            }
+         })
+      }
+
+   </script>
+}

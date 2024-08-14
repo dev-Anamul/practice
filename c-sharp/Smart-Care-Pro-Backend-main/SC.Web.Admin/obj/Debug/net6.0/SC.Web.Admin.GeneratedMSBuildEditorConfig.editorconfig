@@ -1,0 +1,1183 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SC.Web.Admin
+build_property.RootNamespace = SC.Web.Admin
+build_property.ProjectDir = F:\ETL-Projects\IHM-SmartCare\SmartCare_STTA\SC.Web.Admin\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = F:\ETL-Projects\IHM-SmartCare\SmartCare_STTA\SC.Web.Admin
+build_property._RazorSourceGeneratorDebug = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AllergicDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWNEcnVnc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AllergicDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWNEcnVnc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AllergicDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWNEcnVnc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Allergies/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Allergies/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Allergies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsZXJnaWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AnatomicAxises/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hdG9taWNBeGlzZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AnatomicAxises/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hdG9taWNBeGlzZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/AnatomicAxises/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hdG9taWNBeGlzZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ArmedForceServices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJtZWRGb3JjZVNlcnZpY2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ArmedForceServices/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJtZWRGb3JjZVNlcnZpY2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ArmedForceServices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJtZWRGb3JjZVNlcnZpY2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugClasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z0NsYXNzZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugClasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z0NsYXNzZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugClasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z0NsYXNzZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ARTDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVJURHJ1Z3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Breeches/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJlZWNoZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Breeches/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJlZWNoZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Breeches/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJlZWNoZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CaCxScreeningMethods/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FDeFNjcmVlbmluZ01ldGhvZHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CaCxScreeningMethods/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FDeFNjcmVlbmluZ01ldGhvZHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CaCxScreeningMethods/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FDeFNjcmVlbmluZ01ldGhvZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfNeonatalDeaths/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZk5lb25hdGFsRGVhdGhzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfNeonatalDeaths/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZk5lb25hdGFsRGVhdGhzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfNeonatalDeaths/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZk5lb25hdGFsRGVhdGhzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfStillBirths/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZlN0aWxsQmlydGhzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfStillBirths/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZlN0aWxsQmlydGhzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CauseOfStillBirths/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F1c2VPZlN0aWxsQmlydGhzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CircumcisionReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2lyY3VtY2lzaW9uUmVhc29uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CircumcisionReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2lyY3VtY2lzaW9uUmVhc29uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CircumcisionReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2lyY3VtY2lzaW9uUmVhc29uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ClientTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50VHlwZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ClientTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50VHlwZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ClientTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50VHlwZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ComplicationTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGxpY2F0aW9uVHlwZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ComplicationTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGxpY2F0aW9uVHlwZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ComplicationTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGxpY2F0aW9uVHlwZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CompositeTests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9zaXRlVGVzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CompositeTests/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9zaXRlVGVzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CompositeTests/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9zaXRlVGVzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptoms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptoms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptoms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptomTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tVHlwZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptomTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tVHlwZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ConstitutionalSymptomTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3RpdHV0aW9uYWxTeW1wdG9tVHlwZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Contraceptives/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY2VwdGl2ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Contraceptives/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY2VwdGl2ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Contraceptives/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY2VwdGl2ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Countries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Countries/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Countries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Countries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CovidSymptoms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ292aWRTeW1wdG9tc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CovidSymptoms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ292aWRTeW1wdG9tc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/CovidSymptoms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ292aWRTeW1wdG9tc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DFZRanks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREZaUmFua3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DFZRanks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREZaUmFua3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DFZRanks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREZaUmFua3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Disabilities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzYWJpbGl0aWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Disabilities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzYWJpbGl0aWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Disabilities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzYWJpbGl0aWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Districts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpY3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Districts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpY3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Districts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpY3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugClasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0NsYXNzZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugClasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0NsYXNzZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugClasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0NsYXNzZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDefinitions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0RlZmluaXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDefinitions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0RlZmluaXRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDefinitions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0RlZmluaXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDosageUnits/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Rvc2FnZVVuaXRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDosageUnits/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Rvc2FnZVVuaXRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugDosageUnits/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Rvc2FnZVVuaXRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugFormulations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Zvcm11bGF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugFormulations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Zvcm11bGF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugFormulations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z0Zvcm11bGF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRegimens/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JlZ2ltZW5zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRegimens/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JlZ2ltZW5zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRegimens/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JlZ2ltZW5zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRoutes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JvdXRlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRoutes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JvdXRlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugRoutes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1JvdXRlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugSubclasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1N1YmNsYXNzZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugSubclasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1N1YmNsYXNzZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugSubclasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1N1YmNsYXNzZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugUtilities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1V0aWxpdGllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugUtilities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1V0aWxpdGllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/DrugUtilities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHJ1Z1V0aWxpdGllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/EducationLevels/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWR1Y2F0aW9uTGV2ZWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/EducationLevels/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWR1Y2F0aW9uTGV2ZWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/EducationLevels/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWR1Y2F0aW9uTGV2ZWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ExposureTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwb3N1cmVUeXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ExposureTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwb3N1cmVUeXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ExposureTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwb3N1cmVUeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Facilities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdGllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Facilities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdGllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Facilities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdGllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningClasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdDbGFzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningClasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdDbGFzc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningClasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdDbGFzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningSubClasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdTdWJDbGFzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningSubClasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdTdWJDbGFzc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FamilyPlanningSubClasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5UGxhbm5pbmdTdWJDbGFzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FrequencyIntervals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJlcXVlbmN5SW50ZXJ2YWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FrequencyIntervals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJlcXVlbmN5SW50ZXJ2YWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/FrequencyIntervals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJlcXVlbmN5SW50ZXJ2YWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GenericDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJpY0RydWdzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GenericDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJpY0RydWdzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GenericDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJpY0RydWdzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GynConfirmations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3luQ29uZmlybWF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GynConfirmations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3luQ29uZmlybWF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/GynConfirmations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3luQ29uZmlybWF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVNotTestingReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWTm90VGVzdGluZ1JlYXNvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVNotTestingReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWTm90VGVzdGluZ1JlYXNvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVNotTestingReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWTm90VGVzdGluZ1JlYXNvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVRiskFactors/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWUmlza0ZhY3RvcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVRiskFactors/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWUmlza0ZhY3RvcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVRiskFactors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWUmlza0ZhY3RvcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVTestingReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWVGVzdGluZ1JlYXNvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVTestingReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWVGVzdGluZ1JlYXNvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HIVTestingReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSElWVGVzdGluZ1JlYXNvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HomeLanguages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUxhbmd1YWdlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HomeLanguages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUxhbmd1YWdlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/HomeLanguages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUxhbmd1YWdlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICDDiagnosis/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNERGlhZ25vc2lzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICDDiagnosis/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNERGlhZ25vc2lzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICDDiagnosis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNERGlhZ25vc2lzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICPC2Descriptions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNQQzJEZXNjcmlwdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICPC2Descriptions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNQQzJEZXNjcmlwdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ICPC2Descriptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUNQQzJEZXNjcmlwdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/InterCourseStatus/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJDb3Vyc2VTdGF0dXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/InterCourseStatus/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJDb3Vyc2VTdGF0dXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/InterCourseStatus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJDb3Vyc2VTdGF0dXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/KeyPopulations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5UG9wdWxhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/KeyPopulations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5UG9wdWxhdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/KeyPopulations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5UG9wdWxhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/LeepsTreatmentMethod/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVlcHNUcmVhdG1lbnRNZXRob2RcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/LeepsTreatmentMethod/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVlcHNUcmVhdG1lbnRNZXRob2RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/LeepsTreatmentMethod/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVlcHNUcmVhdG1lbnRNZXRob2RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/LogData/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nRGF0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/MeasuringUnits/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyaW5nVW5pdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/MeasuringUnits/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyaW5nVW5pdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/MeasuringUnits/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyaW5nVW5pdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ModeOfDeliveries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZU9mRGVsaXZlcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ModeOfDeliveries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZU9mRGVsaXZlcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ModeOfDeliveries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZU9mRGVsaXZlcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NeonatalBirthOutcomes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmVvbmF0YWxCaXJ0aE91dGNvbWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NeonatalBirthOutcomes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmVvbmF0YWxCaXJ0aE91dGNvbWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NeonatalBirthOutcomes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmVvbmF0YWxCaXJ0aE91dGNvbWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelOneDiagnosis/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxPbmVEaWFnbm9zaXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelOneDiagnosis/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxPbmVEaWFnbm9zaXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelOneDiagnosis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxPbmVEaWFnbm9zaXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelThreeDiagnosis/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUaHJlZURpYWdub3Npc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelThreeDiagnosis/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUaHJlZURpYWdub3Npc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelThreeDiagnosis/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUaHJlZURpYWdub3Npc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelThreeDiagnosis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUaHJlZURpYWdub3Npc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelTwoDiagnosis/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUd29EaWFnbm9zaXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelTwoDiagnosis/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUd29EaWFnbm9zaXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/NTGLevelTwoDiagnosis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTlRHTGV2ZWxUd29EaWFnbm9zaXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Occupations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2NjdXBhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Occupations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2NjdXBhdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Occupations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2NjdXBhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PainScales/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpblNjYWxlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PainScales/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpblNjYWxlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PainScales/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFpblNjYWxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PastMedicalConditions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdE1lZGljYWxDb25kaXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PastMedicalConditions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdE1lZGljYWxDb25kaXRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PastMedicalConditions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdE1lZGljYWxDb25kaXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PathologyAxises/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aG9sb2d5QXhpc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PathologyAxises/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aG9sb2d5QXhpc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PathologyAxises/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aG9sb2d5QXhpc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PatientTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFR5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PatientTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFR5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PatientTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFR5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PhysicalSystems/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljYWxTeXN0ZW1zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PhysicalSystems/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljYWxTeXN0ZW1zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PhysicalSystems/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljYWxTeXN0ZW1zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PreferredFeedings/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlZmVycmVkRmVlZGluZ3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PreferredFeedings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlZmVycmVkRmVlZGluZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PreferredFeedings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlZmVycmVkRmVlZGluZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PresentingParts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2VudGluZ1BhcnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PresentingParts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2VudGluZ1BhcnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PresentingParts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2VudGluZ1BhcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PriorSensitizations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JTZW5zaXRpemF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PriorSensitizations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JTZW5zaXRpemF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/PriorSensitizations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JTZW5zaXRpemF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Provinces/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmluY2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Provinces/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmluY2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Provinces/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmluY2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Provinces/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmluY2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Questions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Questions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Questions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ReasonOfReferrals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhc29uT2ZSZWZlcnJhbHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ReasonOfReferrals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhc29uT2ZSZWZlcnJhbHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ReasonOfReferrals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhc29uT2ZSZWZlcnJhbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ResultOptions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0T3B0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ResultOptions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0T3B0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ResultOptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0T3B0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Risks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlza3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Risks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Risks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlza3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ServicePoints/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVBvaW50c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ServicePoints/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVBvaW50c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ServicePoints/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVBvaW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_LayoutOne.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_Pagination-parent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmF0aW9uLXBhcmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_Pagination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SpecialDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BlY2lhbERydWdzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SpecialDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BlY2lhbERydWdzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SpecialDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BlY2lhbERydWdzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/STIRisks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU1RJUmlza3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/STIRisks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU1RJUmlza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/STIRisks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU1RJUmlza3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/StoppingReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcHBpbmdSZWFzb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/StoppingReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcHBpbmdSZWFzb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/StoppingReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcHBpbmdSZWFzb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SystemsRelevances/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtc1JlbGV2YW5jZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SystemsRelevances/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtc1JlbGV2YW5jZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/SystemsRelevances/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtc1JlbGV2YW5jZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJEcnVnc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJEcnVnc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJEcnVnc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBFindings/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJGaW5kaW5nc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBFindings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJGaW5kaW5nc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBFindings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJGaW5kaW5nc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBIdentificationMethods/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJJZGVudGlmaWNhdGlvbk1ldGhvZHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBIdentificationMethods/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJJZGVudGlmaWNhdGlvbk1ldGhvZHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBIdentificationMethods/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJJZGVudGlmaWNhdGlvbk1ldGhvZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSuspectingReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTdXNwZWN0aW5nUmVhc29uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSuspectingReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTdXNwZWN0aW5nUmVhc29uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSuspectingReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTdXNwZWN0aW5nUmVhc29uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSymptoms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTeW1wdG9tc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSymptoms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTeW1wdG9tc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TBSymptoms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVEJTeW1wdG9tc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestItems/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdEl0ZW1zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestItems/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdEl0ZW1zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestItems/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdEl0ZW1zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestSubtypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFN1YnR5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestSubtypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFN1YnR5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestSubtypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFN1YnR5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/CreateTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcQ3JlYXRlVGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/EditTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcRWRpdFRlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Tests/IndexTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcSW5kZXhUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TestTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ThermoAblationTreatmentMethod/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcm1vQWJsYXRpb25UcmVhdG1lbnRNZXRob2RcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ThermoAblationTreatmentMethod/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcm1vQWJsYXRpb25UcmVhdG1lbnRNZXRob2RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/ThermoAblationTreatmentMethod/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcm1vQWJsYXRpb25UcmVhdG1lbnRNZXRob2RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Towns/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG93bnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Towns/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG93bnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Towns/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG93bnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TPTDrugs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVFBURHJ1Z3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TPTDrugs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVFBURHJ1Z3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/TPTDrugs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVFBURHJ1Z3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/UserAccesses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY2Vzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineDoses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZURvc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineDoses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZURvc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineDoses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZURvc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Vaccines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Vaccines/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Vaccines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVR5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVR5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VaccineTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVR5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VisitTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRUeXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VisitTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRUeXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VisitTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRUeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VMMCCampaigns/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVk1NQ0NhbXBhaWduc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VMMCCampaigns/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVk1NQ0NhbXBhaWduc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/VMMCCampaigns/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVk1NQ0NhbXBhaWduc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOClinicalStages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPQ2xpbmljYWxTdGFnZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOClinicalStages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPQ2xpbmljYWxTdGFnZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOClinicalStages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPQ2xpbmljYWxTdGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOStagesConditions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPU3RhZ2VzQ29uZGl0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOStagesConditions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPU3RhZ2VzQ29uZGl0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/WHOStagesConditions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV0hPU3RhZ2VzQ29uZGl0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ETL-Projects/IHM-SmartCare/SmartCare_STTA/SC.Web.Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bwifiw9rhw

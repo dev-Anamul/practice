@@ -1,0 +1,10 @@
+in: query
+name: order
+description: Order by
+required: false
+schema:
+  type: string
+  enum:
+    - asc
+    - desc
+  example: asc

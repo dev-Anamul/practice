@@ -1,0 +1,86 @@
+﻿@model Domain.Entities.NTGLevelThreeDiagnosis
+
+@{  
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var (module, parent) = (Context.Request.Query["module"].ToString(), Context.Request.Query["parent"].ToString());
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 mt-3 CardOffset">
+   <div class="col-md-12 col-lg-12 p-0 ps-sm-4 ClCard">
+
+      <div class="card">
+         <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+               <!--HEADER-->
+               <div class="pagetitle">
+                  <h4 class="card-title fs-2 fw-bold mb-0">NTG Level Three Diagnosis</h4>
+                  <hr class="mt-0">
+               </div>
+
+               @*<div class="row mt-3">
+                  <div class="col-lg-4 col-md-4 label fw-bolder"> NTG Level One Diagnosis </div>
+                  <div class="col-lg-8 col-md-8 col-7"> : @Model.NTGLevelTwoDiagnosis.NTGLevelOneDiagnosis.Description </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-4 col-md-4 label fw-bolder"> NTG Level Two Diagnosis </div>
+                  <div class="col-lg-8 col-md-8 col-7"> : @Model.NTGLevelTwoDiagnosis.Description</div>
+               </div>*@
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> NTG Level Three Diagnosis </div>
+                  <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.Description</div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Clinical Features </div>
+                  <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.ClinicalFeatures </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Investigations </div>
+                  <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.RecommendedInvestigations </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Investigation Note </div>
+                   <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.InvestigationNotes </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Treatment Note </div>
+                   <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.TreatmentNotes </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Pharmacy </div>
+                   <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.Pharmacy </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Complications </div>
+                   <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.Complications </div>
+               </div>
+
+               <div class="row mt-3">
+                  <div class="col-lg-3 col-md-3 col-4 label fw-bolder"> Prevention </div>
+                  <div class="col-design">:</div>
+                  <div class="col-lg-8 col-md-8 col-7"> @Model.Prevention </div>
+               </div>
+
+               <!--ACTIONS-->
+               <div class="col-12 mt-0 mt-4 mb-4 text-center">
+                    <a href="/NTGLevelThreeDiagnosis/Index?module=@module&parent=@parent&oid=@ViewBag.levelThree" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+               </div>
+
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,29 @@
+type: object
+properties:
+  expenseName:
+    type: string
+    example: Expense Name
+  description:
+    type: string
+    example: Expense Description
+  expenseType:
+    type: string
+    example: 5f9d5b9b9d5b9f9d5b9d5b9f
+  totalAmount:
+    type: number
+    example: 1000
+  status:
+    type: string
+    enum:
+      - pending
+      - approved
+      - rejected
+      - pending for slip
+    example: pending
+  isGSTClaimable:
+    type: boolean
+    example: true
+  expenseDate:
+    type: string
+    format: date
+    example: '2023-09-14'

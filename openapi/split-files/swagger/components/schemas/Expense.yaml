@@ -1,0 +1,11 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        example: 5e9d5b2b4f9f9b0017b5e7a0
+      claimableAmount:
+        type: number
+        example: 1000
+  - $ref: ./ExpenseDto.yaml
+  - $ref: ./Timestamp.yaml

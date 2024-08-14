@@ -1,0 +1,57 @@
+patch:
+  description: Update profile information of the logged in user
+  summary: Update profile
+  operationId: updateProfile
+  tags:
+    - Auth
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/UpdateUserDto.yaml
+            - type: object
+              properties:
+                avatar:
+                  type: string
+                  format: binary
+                  description: avatar image file
+  responses:
+    "200":
+      description: user profile updated successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: user profile updated successfully
+              data:
+                $ref: ../../components/schemas/User.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/auth/update-profile
+                  login:
+                    type: string
+                    example: /api/v1/auth/login
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

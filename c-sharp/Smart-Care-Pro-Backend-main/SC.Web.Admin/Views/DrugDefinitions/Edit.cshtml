@@ -1,0 +1,132 @@
+﻿@model Domain.Entities.GeneralDrugDefinition
+
+@{
+   
+   Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+      <div class="card">
+         <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+
+            <!--HEADER-->
+            <div class="pagetitle">
+               <h4 class="card-title fs-2 fw-bold mb-0">General Drug Definition</h4>
+               <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+               <hr class="mt-0">
+            </div>
+
+            <!--FORM START-->
+            <form class="row g-1" method="post" asp-action="Edit" asp-controller="DrugDefinitions">
+               <input type="text" asp-for="Oid" hidden />
+
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="200">
+                            <label class="required" asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--STRENGTH-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="Strength" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                            <label class="required" asp-for="Strength">Strength</label>
+                            <span asp-validation-for="Strength" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Combined Validation Message-->
+                    <div class="col-md-12 mt-2">
+                        <span id="combined-validation" class="text-danger"></span>
+                    </div>
+
+               <!--DOSES UNIT-->
+               <div class="col-md-12">
+                  <div class="col-md-6 mt-2">
+                     <label class="required">Dosage Unit</label>
+                  </div>
+
+                  <div class="form-floating mt-1">
+                     <select asp-for="DosageUnitId" name="DosageUnitId" class="form-select select2" data-show-subtext="true" data-live-search="true" data-val="true" asp-items="@ViewBag.DosageUnits" aria-label="State">
+                        <option value="" class="pt-2">Select</option>
+                     </select>
+                  </div>
+                  <span asp-validation-for="DosageUnitId" class="text-danger"></span>
+               </div>
+
+               <!--DRUG FORMULATION-->
+               <div class="col-md-12">
+                  <div class="col-md-6 mt-2">
+                     <label class="required">Drug Formulation</label>
+                  </div>
+
+                  <div class="form-floating mt-1">
+                     <select asp-for="FormulationId" name="FormulationId" class="form-select select2" data-show-subtext="true" data-live-search="true" data-val="true" asp-items="@ViewBag.DrugFormulations">
+                        <option value="" class="pt-2">Select</option>
+                     </select>
+                  </div>
+                  <span asp-validation-for="FormulationId" class="text-danger"></span>
+               </div>
+
+               <!--DRUG UTILITY-->
+               <div class="col-md-12">
+                  <div class="col-md-6 mt-2">
+                     <label class="required">Drug Utilities</label>
+                  </div>
+
+                  <div class="form-floating mt-1">
+                     <select asp-for="DrugUtilityId" name="DrugUtilityId" class="form-select select2" data-show-subtext="true" data-live-search="true" data-val="true" asp-items="@ViewBag.DrugUtilities">
+                        <option value="" class="pt-2">Select</option>
+                     </select>
+                  </div>
+                  <span asp-validation-for="DrugUtilityId" class="text-danger"></span>
+               </div>
+
+               <!--GENERIC DRUG-->
+               <div class="col-md-12">
+                  <div class="col-md-6 mt-2">
+                     <label class="required">Generic Drug</label>
+                  </div>
+
+                  <div class="form-floating mt-1">
+                     <select asp-for="GenericDrugId" name="GenericDrugId" class="form-select select2" data-show-subtext="true" data-live-search="true" data-val="true" asp-items="@ViewBag.GenericDrugs">
+                        <option value="" class="pt-2">Select</option>
+                     </select>
+                  </div>
+                  <span asp-validation-for="GenericDrugId" class="text-danger"></span>
+               </div>
+
+               <!--ACTIONS-->
+               <div class="col-12 mt-0 mt-3 text-center">
+                  <button class="btn btn-primary btn-lg mx-2" type="submit">
+                     <i class="bi bi-check2-circle"></i> Submit
+                  </button>
+                  <a href="/DrugDefinitions/Index?module=Pharmacy" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+               </div>
+            </form>
+
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+    // Add an event listener to trigger the combined validation message update
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCombinedValidationMessage();
+    });
+
+    // Function to update the combined validation message
+    function updateCombinedValidationMessage() {
+        var descriptionValidation = document.querySelector('[data-valmsg-for="Description"]');
+        var strengthValidation = document.querySelector('[data-valmsg-for="Strength"]');
+        var combinedValidationMessage = document.getElementById('combined-validation');
+
+        // Update the combined validation message based on the individual field validations
+        combinedValidationMessage.textContent = (descriptionValidation.textContent || strengthValidation.textContent).trim();
+    }
+</script>

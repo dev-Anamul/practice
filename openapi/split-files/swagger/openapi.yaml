@@ -1,0 +1,222 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Easy Tax Application
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: >-
+    Introducing our user-friendly Easy Tax REST API, designed to simplify
+    tax-related data integration. With our intuitive platform, preparing and
+    submitting your taxes has never been easier. Say goodbye to complicated
+    forms and confusing jargon; our application guides you through each step
+    with clear, plain-language instructions.
+  contact:
+    name: Pixfar developer team
+    url: https://pixfar.com
+    email: pixfar@gmail.com
+servers:
+  - description: dev
+    url: http://127.0.0.1:6050/api/v1
+  - description: Production
+    url: https://api.easy-tax.pixfar.com/api/v1
+  - description: Easy Tax API
+    url: https://api-fluxx.fluxx.co.nz/api/v1
+tags:
+  - name: Auth
+    description: Authentication endpoints (public)
+  - name: Expense
+    description: Expense endpoint (private)
+  - name: OCR
+    description: OCR endpoints (private)
+  - name: Category
+    description: Category endpoints (private)
+  - name: Income Source
+    description: Income Source endpoints (private)
+  - name: Admin
+    description: User endpoint (private & admin)
+  - name: Notification
+    description: notification endpoints (private)
+paths:
+  # Auth Endpoints
+  /auth/signup:
+    $ref: ./paths/auth/auth_signup.yaml
+  /auth/login:
+    $ref: ./paths/auth/auth_login.yaml
+  /auth/forgot-password:
+    $ref: ./paths/auth/auth_forgot-password.yaml
+  /auth/reset-password:
+    $ref: ./paths/auth/auth_reset-password.yaml
+  /auth/update-password:
+    $ref: ./paths/auth/auth_update-password.yaml
+  /auth/update-profile:
+    $ref: ./paths/auth/auth_update-profile.yaml
+  /auth/profile:
+    $ref: ./paths/auth/auth_profile.yaml
+  /auth/delete-profile:
+    $ref: ./paths/auth/auth_delete-profile.yaml
+
+  # Expense Endpoints
+  /expenses:
+    $ref: "./paths/expense/expenses.yaml"
+  /expenses/{id}:
+    $ref: "./paths/expense/expenses_{id}.yaml"
+  /expenses/bulk:
+    $ref: "./paths/expense/expenses_bulk.yaml"
+  /expenses/csv:
+    $ref: ./paths/expense/expenses_csv.yaml
+  /expenses/total-by-category:
+    $ref: ./paths/expense/expenses_total-by-category.yaml
+  /admin/expenses:
+    $ref: ./paths/admin/admin_expenses.yaml
+
+  # OCR Endpoints
+  /ocr-expenses:
+    $ref: ./paths/ocr-expense/ocr-expenses.yaml
+  /ocr-expenses/{id}:
+    $ref: ./paths/ocr-expense/ocr-expenses_{id}.yaml
+  /admin/ocr-expenses:
+    $ref: ./paths/admin/admin_ocr-expenses.yaml
+  /ocr-expenses/process:
+    $ref: ./paths/ocr-expense/ocr-expenses_process.yaml
+  /ocr-expenses/report:
+    $ref: ./paths/ocr-expense/ocr-expenses_report.yaml
+
+  # Category Endpoints
+  /categories:
+    $ref: ./paths/category/categories.yaml
+  /categories/{id}:
+    $ref: ./paths/category/categories_{id}.yaml
+  /categories/{id}/expenses:
+    $ref: ./paths/category/categories_{id}_expenses.yaml
+
+  # Income types
+  /income-types:
+    $ref: ./paths/income-types/income-types.yaml
+  /income-types/{id}:
+    $ref: ./paths/income-types/income-types_{id}.yaml
+
+  # Assets and Depreciation Endpoints
+  /assets:
+    $ref: ./paths/assets/assets.yaml
+  /assets/{id}:
+    $ref: ./paths/assets/assets_{id}.yaml
+  /assets/{id}/depreciation:
+    $ref: ./paths/assets/assets_{id}_depreciation.yaml
+  /depreciation:
+    $ref: ./paths/depreciation/depreciation.yaml
+
+  # Income Source Endpoints
+  /income-sources:
+    $ref: ./paths/income-sources/income-sources.yaml
+  /income-sources/{id}:
+    $ref: ./paths/income-sources/income-sources_{id}.yaml
+  /admin/income-sources:
+    $ref: ./paths/admin/admin_income-sources.yaml
+  /income-sources/daily-income:
+    $ref: ./paths/income-sources/income-sources_daily-income.yaml
+  /income-sources/monthly-income:
+    $ref: ./paths/income-sources/income-sources_monthly-income.yaml
+  /income-sources/income-by-category:
+    $ref: ./paths/income-sources/income-sources_income-by-category.yaml
+  /income-sources/csv:
+    $ref: ./paths/income-sources/income-sources_csv.yaml
+
+  # Notification Endpoints
+  /notifications:
+    $ref: ./paths/notifications/notifications.yaml
+  /notifications/{id}:
+    $ref: ./paths/notifications/notifications_{id}.yaml
+  /notifications/users/{id}:
+    $ref: ./paths/notifications/notifications_users_{id}.yaml
+  /notifications/users/many:
+    $ref: ./paths/notifications/notifications_users_many.yaml
+  /notifications/users/all:
+    $ref: ./paths/notifications/notifications_users_all.yaml
+  /notifications/{id}/read:
+    $ref: ./paths/notifications/notifications_{id}_read.yaml
+  /admin/notifications:
+    $ref: ./paths/admin/admin_notifications.yaml
+  /admin/notifications/{id}:
+    $ref: ./paths/admin/admin_notifications_{id}.yaml
+
+  # Notification channels
+  /notifications/channels:
+    $ref: ./paths/notification-channels/notifications_channels.yaml
+  /notifications/channels/{id}:
+    $ref: ./paths/notification-channels/notifications_channels_{id}.yaml
+  /notifications/channels/{id}/users:
+    $ref: ./paths/notification-channels/notifications_channels_{id}_users.yaml
+  /notifications/channels/{id}/users/{userId}:
+    $ref: ./paths/notification-channels/notifications_channels_{id}_users_{userId}.yaml
+  /notifications/channels/{id}/notify:
+    $ref: ./paths/notification-channels/notifications_channels_{id}_notify.yaml
+
+  # Dashboard Endpoints
+  /dashboard:
+    $ref: ./paths/dashboard/dashboard.yaml
+  /dashboard/daily-expense:
+    $ref: ./paths/dashboard/dashboard_daily-expense.yaml
+  /dashboard/monthly-expense:
+    $ref: ./paths/dashboard/dashboard_monthly-expense.yaml
+
+  # Admin Endpoints
+  /admin/users:
+    $ref: ./paths/admin/admin_users.yaml
+  /admin/users/{id}:
+    $ref: ./paths/admin/admin_users_{id}.yaml
+  /admin/dashboard:
+    $ref: ./paths/admin/admin_dashboard.yaml
+  /admin/dashboard/daily-income-expense:
+    $ref: ./paths/admin/admin_dashboard_daily-income-expense.yaml
+  /admin/dashboard/monthly-income-expense:
+    $ref: ./paths/admin/admin_dashboard_monthly-income-expense.yaml
+
+  # settings
+  /settings:
+    $ref: ./paths/settings/settings.yaml
+
+  # Tax Slabs
+  /tax-slabs:
+    $ref: ./paths/tax/tax-slabs.yaml
+  /tax-slabs/{id}:
+    $ref: ./paths/tax/tax-slabs_{id}.yaml
+
+  # Support Messages
+  /support-messages:
+    $ref: ./paths/support-message/support-messages.yaml
+  /support-messages/{id}:
+    $ref: ./paths/support-message/support-messages_{id}.yaml
+  /support-messages/{id}/reply:
+    $ref: ./paths/support-message/support-messages_{id}_reply.yaml
+  /support-messages/{id}/featured:
+    $ref: ./paths/support-message/support-messages_{id}_featured.yaml
+  /support-messages/{id}/read:
+    $ref: ./paths/support-message/support-messages_{id}_read.yaml
+
+  # fiscal years
+  /fiscal-years:
+    $ref: ./paths/fiscal-years/fiscal-years.yaml
+  /fiscal-years/{id}:
+    $ref: ./paths/fiscal-years/fiscal-years_{id}.yaml
+
+  # tax
+  /tax:
+    $ref: ./paths/tax/tax.yaml
+  /tax/users/{userId}:
+    $ref: ./paths/tax/tax_users_{userId}.yaml
+
+components:
+  parameters:
+    $ref: "./components/parameters/_index.yaml"
+  schemas:
+    $ref: "./components/schemas/_index.yaml"
+  responses:
+    $ref: "./components/responses/_index.yaml"
+
+    # Security Definitions
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

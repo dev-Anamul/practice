@@ -1,0 +1,35 @@
+delete:
+  description: Remove a user from a channel
+  summary: Remove a user from a channel
+  operationId: removeUserFromChannel
+  tags:
+    - Notification Channel
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+    - $ref: ../../components/parameters/path/userIdPath.yaml
+  responses:
+    "200":
+      description: user successfully removed from channel
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: notification channel fetched successfully
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

@@ -1,0 +1,36 @@
+type: object
+properties:
+  webLogo:
+    type: string
+    format: binary
+    description: Web logo
+  mobileLogo:
+    type: string
+    format: binary
+    description: App logo
+  fevIcon:
+    type: string
+    format: binary
+    description: Favicon
+  title:
+    type: string
+    description: Web title
+    example: Web title
+  appTitle:
+    type: string
+    description: App title
+    example: App title
+  appDescription:
+    type: string
+    description: App description
+    example: App description
+  fiscalStartMont:
+    type: integer
+    format: int32
+    description: Fiscal start month
+    example: 1
+  fiscalEndMonth:
+    type: integer
+    format: int32
+    description: Fiscal end month
+    example: 12

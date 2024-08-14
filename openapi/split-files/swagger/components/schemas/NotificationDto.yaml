@@ -1,0 +1,8 @@
+type: object
+properties:
+  title:
+    type: number
+    example: 1000
+  body:
+    type: string
+    example: 1000

@@ -1,0 +1,43 @@
+# PATH parameters
+id:
+  $ref: "./path/id.yaml"
+token:
+  $ref: "./path/token.yaml"
+userIdPath:
+  $ref: "./path/userIdPath.yaml"
+
+# QUERY parameters
+limit:
+  $ref: "./query/limit.yaml"
+dynamic:
+  $ref: "./query/dynamic.yaml"
+endDate:
+  $ref: "./query/endDate.yaml"
+startDate:
+  $ref: "./query/startDate.yaml"
+expand:
+  $ref: "./query/expand.yaml"
+fields:
+  $ref: "./query/fields.yaml"
+fiscal:
+  $ref: "./query/fiscal.yaml"
+numOfDays:
+  $ref: "./query/numOfDays.yaml"
+numOfMonths:
+  $ref: "./query/numOfMonths.yaml"
+orderBy:
+  $ref: "./query/order.yaml"
+page:
+  $ref: "./query/page.yaml"
+search:
+  $ref: "./query/search.yaml"
+sort:
+  $ref: "./query/sort.yaml"
+type:
+  $ref: "./query/type.yaml"
+userId:
+  $ref: "./query/userId.yaml"
+years:
+  $ref: "./query/years.yaml"
+date:
+  $ref: "./query/date.yaml"

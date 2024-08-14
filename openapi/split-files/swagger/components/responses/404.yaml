@@ -1,0 +1,16 @@
+description: Your requested resource was not found
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 404
+        status:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Your requested resource was not found

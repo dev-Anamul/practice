@@ -1,0 +1,160 @@
+get:
+  description: Get specific expense of the currently logged in user by id
+  summary: Get specific expense
+  operationId: getExpense
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  responses:
+    "200":
+      description: expense fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expense fetched successfully
+              data:
+                $ref: ../../components/schemas/Expense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/expenses
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+patch:
+  description: Update specific expense of the currently logged in user by id
+  summary: Update specific expense
+  operationId: updateExpense
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - type: object
+              properties:
+                gstAmount:
+                  type: number
+                  format: float
+                  example: 100
+                claimableAmount:
+                  type: number
+                  format: float
+                  example: 100
+                ocrAmount:
+                  type: number
+                  format: float
+                  example: 100
+                isAsset:
+                  type: boolean
+                  example: true
+                filePath:
+                  type: string
+                  example: /path/to/file
+            - $ref: ../../components/schemas/ExpenseDto.yaml
+  responses:
+    "200":
+      description: expense updated successfully
+
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expense updated successfully
+              data:
+                $ref: ../../components/schemas/Expense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/expenses
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "403":
+      $ref: ../../components/responses/403.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+delete:
+  description: Delete specific expense of the currently logged in user by id
+  summary: Delete specific expense
+  operationId: deleteExpense
+  tags:
+    - Expense
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/path/id.yaml
+    - $ref: ../../components/parameters/query/userId.yaml
+  responses:
+    "200":
+      description: expense deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: expense deleted successfully
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "403":
+      $ref: ../../components/responses/403.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

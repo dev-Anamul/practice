@@ -1,0 +1,64 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace Infrastructure.Migrations
+{
+    public partial class IntialCreateICPC2Descriptions : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "ICPC2Descriptions",
+                columns: table => new
+                {
+                    Oid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(90)", maxLength: 90, nullable: false),
+                    AnatomicAxisId = table.Column<int>(type: "int", nullable: false),
+                    PathologyAxisId = table.Column<int>(type: "int", nullable: false),
+                    CreatedIn = table.Column<int>(type: "int", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ModifiedIn = table.Column<int>(type: "int", nullable: true),
+                    DateModified = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
+                    IsSynced = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ICPC2Descriptions", x => x.Oid);
+                    table.ForeignKey(
+                        name: "FK_ICPC2Descriptions_AnatomicAxes_AnatomicAxisId",
+                        column: x => x.AnatomicAxisId,
+                        principalTable: "AnatomicAxes",
+                        principalColumn: "Oid",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ICPC2Descriptions_PathologyAxes_PathologyAxisId",
+                        column: x => x.PathologyAxisId,
+                        principalTable: "PathologyAxes",
+                        principalColumn: "Oid",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ICPC2Descriptions_AnatomicAxisId",
+                table: "ICPC2Descriptions",
+                column: "AnatomicAxisId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ICPC2Descriptions_PathologyAxisId",
+                table: "ICPC2Descriptions",
+                column: "PathologyAxisId");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "ICPC2Descriptions");
+        }
+    }
+}

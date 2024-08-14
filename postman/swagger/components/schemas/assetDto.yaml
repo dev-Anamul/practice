@@ -1,0 +1,36 @@
+type: object
+properties:
+  name:
+    type: string
+    example: IRD
+  description:
+    type: string
+    example: This is a description
+  category:
+    type: string
+    example: 5e9d5b2b4f9f9b0017b5e7a0
+  purchaseDate:
+    type: string
+    format: date-time
+    example: '2020-04-20T00:00:00.000Z'
+  purchasePrice:
+    type: number
+    example: 100
+  status:
+    type: string
+    enum:
+      - pending
+      - approved
+      - rejected
+      - pending for slip
+    example: approved
+  isSold:
+    type: boolean
+    example: false
+  saleDate:
+    type: string
+    format: date-time
+    example: '2020-04-20T00:00:00.000Z'
+  salePrice:
+    type: number
+    example: 100

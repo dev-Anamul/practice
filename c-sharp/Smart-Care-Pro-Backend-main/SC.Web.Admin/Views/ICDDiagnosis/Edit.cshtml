@@ -1,0 +1,85 @@
+﻿@model Domain.Entities.ICDDiagnosis
+
+@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   var (module, parent) = (Context.Request.Query["module"].ToString(), Context.Request.Query["parent"].ToString());
+}
+
+<div class="row ps-2 pe-2 ps-sm-4 pe-sm-4 offset-1 CardOffset">
+   <div class="col-md-10 col-lg-10 p-0 ps-sm-4 ClCard">
+
+        <div class="card">
+            <div class="card-body ps-4 pe-4 ps-sm-5 pe-sm-5">
+            
+                <!--HEADER-->
+                <div class="pagetitle">
+                    <h4 class="card-title fs-2 fw-bold mb-0">ICD Diagnosis</h4>
+                    <p class="mb-1" style="font-size:14px">Fields marked by <span class="text-danger">*</span> are mandatory</p>
+                    <hr class="mt-0">
+                </div>
+
+                <!--FORM START-->
+                <form class="row g-1" method="post" asp-action="Edit" asp-controller="ICDDiagnosis">
+                    <input asp-for="Oid" type="hidden">
+                  <input type="hidden" name="module" value="@module" />
+                  <input type="hidden" name="parent" value="@parent" />
+                    
+                    <!--ICDCode-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-2">
+                            <input asp-for="ICDCode" type="text" class="form-control" data-val="true" data-val-required="Required.">
+                            <label class="required" asp-for="ICDCode">ICD Code</label>
+                            <span asp-validation-for="ICDCode" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Description-->
+                    <div class="col-md-12">
+                        <div class="form-floating mt-3">
+                            <input asp-for="Description" type="text" class="form-control" data-val="true" data-val-required="Required." data-val-length-max="90" data-val-length-min="2" data-val-length="Diagnosis should be atleast 2 digits.">
+                            <label class="required" asp-for="Description">Description</label>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                   
+                     <!--PARENT CODE-->
+                     <div class="col-md-12 mt-3">
+                        <div class="col-md-6">
+                           <label>Parent Code :</label>
+                        </div>
+
+                        <div class="form-floating mt-2">
+                            <select asp-for="ParentId" class="form-select select2" data-show-subtext="true" data-live-search="true" asp-items="@ViewBag.ICDCode">
+                                <option value="0" class="pt-2">Select</option>
+                            </select>
+                            <span asp-validation-for="ParentId" class="text-danger"></span>
+                        </div>
+                     </div>
+
+                     <!--NTG Level One-->
+                     <div class="col-md-12 mt-3">
+                        <div class="col-md-6">
+                           <label>ICPC2 Diagnosis :</label>
+                        </div>
+
+                        <div class="form-floating mt-2">
+                            <select asp-for="ICPC2Id" class="form-select select2" data-show-subtext="true" data-live-search="true" data-val="true" asp-items="@ViewBag.ICPC2Description" aria-label="State">
+                                <option value="" class="pt-2">Select</option>
+                            </select>
+                        </div>
+                     </div>
+
+                     <!--ACTIONS-->
+                     <div class="col-12 mt-0 mt-3 text-center">
+                        <button class="btn btn-primary btn-lg mx-2" id="btnSave" type="submit">
+                           <i class="bi bi-check2-circle"></i> Submit
+                        </button>
+                        <a href="/ICDDiagnosis/Index?module=@module&parent=@parent" class="btn btn-secondary btn-lg"><i class="bi bi-x-circle"></i> Close</a>
+                     </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

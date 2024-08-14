@@ -1,0 +1,6 @@
+in: query
+name: fields
+description: Fields to be returned
+schema:
+  type: string
+  example: id,amount,description

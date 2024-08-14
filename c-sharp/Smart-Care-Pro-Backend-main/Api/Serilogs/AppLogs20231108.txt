@@ -1,0 +1,174 @@
+08-Nov-2023 14:31:16.176 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 14:31:16.337 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 14:31:16.338 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 14:31:16.338 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 14:31:32.792 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:41.828 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:42.019 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:42.324 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:52.764 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:52.958 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:31:56.686 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:32:54.121 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:11.039 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 14:38:11.087 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 14:38:11.087 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 14:38:11.087 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 14:38:18.266 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:29.569 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:29.721 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:29.914 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:43.663 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:43.819 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:38:49.145 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:39:25.303 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:42:24.702 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 14:42:24.828 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 14:42:24.829 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 14:42:24.829 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 14:44:08.823 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:17.421 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:17.601 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:17.811 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:51.423 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:51.559 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:44:57.878 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:45:06.153 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:45:19.641 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:45:38.574 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:45:51.922 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:49:42.666 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 14:49:42.732 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 14:49:42.733 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 14:49:42.733 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 14:50:01.170 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:09.058 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:09.199 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:09.370 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:21.758 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:21.891 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 14:50:25.295 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:15:01.866 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 16:15:01.907 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 16:15:01.907 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 16:15:01.907 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 16:15:16.815 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:15:30.379 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:15:30.651 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:15:30.928 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:16:25.542 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:16:25.788 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:16:41.646 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:16:41.719 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:31:41.269 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 16:31:41.347 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 16:31:41.348 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 16:31:41.349 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 16:32:15.759 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:32:31.293 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:32:31.534 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:32:31.865 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:32:46.609 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:32:46.803 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:21.772 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:22.832 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:51.279 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:54.132 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:54.724 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:55.562 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:55.843 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.087 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.136 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.169 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.177 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.185 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.194 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.200 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.208 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.217 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.228 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.261 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.271 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.281 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.290 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.298 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.307 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.316 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.324 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.335 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.345 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.357 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.365 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.374 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.383 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.413 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.455 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:56.629 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:33:57.681 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.273 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.405 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.436 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.457 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.576 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.609 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.637 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:02.673 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:11.489 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:34:39.828 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:36:55.194 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:02.910 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.050 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.121 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.158 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.289 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.354 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.390 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:37:03.487 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 16:51:06.040 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 16:51:06.099 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 16:51:06.100 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 16:51:06.100 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 17:22:10.828 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 17:22:10.859 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 17:22:10.859 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 17:22:10.859 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 17:22:21.202 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:22:37.171 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:22:37.512 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:22:37.866 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:23:04.447 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:23:04.779 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:23:10.951 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:33:28.849 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 17:33:28.984 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 17:33:28.985 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 17:33:28.985 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 17:37:52.787 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:10.950 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:11.333 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:11.769 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:20.400 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:20.731 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:38:26.310 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:46:05.632 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 17:46:05.681 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 17:46:05.681 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 17:46:05.681 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 17:49:08.913 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:49:24.077 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:49:24.330 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:49:24.624 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:49:55.169 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:49:55.422 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:50:01.515 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:51:58.418 +06:00 [INF] Now listening on: http://localhost:1759
+08-Nov-2023 17:51:58.479 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+08-Nov-2023 17:51:58.480 +06:00 [INF] Hosting environment: Development
+08-Nov-2023 17:51:58.480 +06:00 [INF] Content root path: D:\ETL-Project\SC-HIP-17-05-2013\Api\
+08-Nov-2023 17:54:30.821 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:54:46.383 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:54:46.634 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:54:46.968 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:56:02.980 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:56:03.253 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing
+08-Nov-2023 17:56:07.637 +06:00 [INF] BasicAuthentication was not authenticated. Failure message: Authorization header is missing

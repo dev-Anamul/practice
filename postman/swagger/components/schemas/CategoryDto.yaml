@@ -1,0 +1,14 @@
+type: object
+properties:
+  name:
+    type: string
+    example: IRD
+  description:
+    type: string
+    example: This is a description
+  claimablePercentage:
+    type: number
+    example: 0.5
+  depreciationRate:
+    type: number
+    example: 0.5

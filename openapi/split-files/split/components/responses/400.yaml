@@ -1,0 +1,27 @@
+description: Bad Request
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 400
+        message:
+          type: string
+          example: Bad Request
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                example: should be string
+              field:
+                type: string
+                example: name
+              value:
+                type: string
+                example: '123'

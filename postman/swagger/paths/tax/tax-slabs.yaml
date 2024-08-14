@@ -1,0 +1,97 @@
+post:
+  description: add a new tax slab
+  summary: add tax slab
+  operationId: addTaxSlab
+  tags:
+    - Tax Slab
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ../../components/schemas/TaxSlabDto.yaml
+  responses:
+    "201":
+      description: tax slab created successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 201
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: tax slab created successfully
+              data:
+                $ref: ../../components/schemas/TaxSlab.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/tax-slabs
+    "400":
+      $ref: ../../components/responses/400.yaml
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
+get:
+  description: Get all tax slabs
+  summary: Get all tax slabs
+  operationId: getAllTaxSlabs
+  tags:
+    - Tax Slab
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/limit.yaml
+    - $ref: ../../components/parameters/query/page.yaml
+  responses:
+    "200":
+      description: tax slabs fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: tax slabs fetched successfully
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/TaxSlab.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/tax-slabs/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/tax-slabs
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml

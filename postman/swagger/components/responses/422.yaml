@@ -1,0 +1,14 @@
+description: Unprocessable Entity
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/Error.yaml"
+  application/xml:
+    schema:
+      $ref: "../schemas/Error.yaml"
+  text/plain:
+    schema:
+      $ref: "../schemas/Error.yaml"
+  text/html:
+    schema:
+      $ref: "../schemas/Error.yaml"

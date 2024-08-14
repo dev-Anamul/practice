@@ -1,0 +1,46 @@
+get:
+  description: get ocr expenses report
+  summary: get ocr expenses report
+  operationId: getOCRExpensesReport
+  tags:
+    - OCR
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: ../../components/parameters/query/fiscal.yaml
+    - $ref: ../../components/parameters/query/userId.yaml
+  responses:
+    "200":
+      description: ocr expense fetched successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+                example: 200
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: ocr expense fetched successfully
+              data:
+                $ref: ../../components/schemas/OCRExpense.yaml
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/v1/ocr-expenses/5e9d5b2b4f9f9b0017b5e7a0
+                  all:
+                    type: string
+                    example: /api/v1/ocr-expenses
+    "401":
+      $ref: ../../components/responses/401.yaml
+    "404":
+      $ref: ../../components/responses/404.yaml
+    "500":
+      $ref: ../../components/responses/500.yaml
